@@ -43,8 +43,8 @@ export default function Navbar() {
                                 key={link.href}
                                 href={link.href}
                                 className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${pathname === link.href
-                                        ? "bg-green-50 text-green-700"
-                                        : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                                    ? "bg-green-50 text-green-700"
+                                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                                     }`}
                             >
                                 {link.label}
@@ -67,14 +67,14 @@ export default function Navbar() {
                                 <div className="absolute right-0 top-full mt-1 bg-white rounded-xl shadow-xl border border-gray-100 py-1 min-w-[140px] z-50 animate-fade-in">
                                     {LANGUAGES.map((lang) => (
                                         <button
-                                            key={lang}
+                                            key={lang.code}
                                             onClick={() => {
-                                                setSelectedLang(lang);
+                                                setSelectedLang(lang.name);
                                                 setLangOpen(false);
                                             }}
                                             className="w-full text-left px-4 py-2 text-sm hover:bg-green-50 hover:text-green-700 transition-colors"
                                         >
-                                            {lang}
+                                            {lang.label}
                                         </button>
                                     ))}
                                 </div>
@@ -115,8 +115,8 @@ export default function Navbar() {
                                 href={link.href}
                                 onClick={() => setMobileMenuOpen(false)}
                                 className={`block px-3 py-2 rounded-lg text-sm font-medium ${pathname === link.href
-                                        ? "bg-green-50 text-green-700"
-                                        : "text-gray-600 hover:bg-gray-50"
+                                    ? "bg-green-50 text-green-700"
+                                    : "text-gray-600 hover:bg-gray-50"
                                     }`}
                             >
                                 {link.label}

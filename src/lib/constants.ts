@@ -10,14 +10,12 @@ export const CATEGORIES = [
 ];
 
 export const LANGUAGES = [
-    "हिंदी",
-    "English",
-    "தமிழ்",
-    "తెలుగు",
-    "বাংলা",
-    "ગુજરાતી",
-    "ਪੰਜਾਬੀ",
-    "मराठी",
+    { code: "hi", label: "हिंदी", name: "Hindi" },
+    { code: "en", label: "English", name: "English" },
+    { code: "bn", label: "বাংলা", name: "Bengali" },
+    { code: "mr", label: "मराठी", name: "Marathi" },
+    { code: "te", label: "తెలుగు", name: "Telugu" },
+    { code: "ta", label: "தமிழ்", name: "Tamil" }
 ];
 
 export const AWS_SERVICES = [

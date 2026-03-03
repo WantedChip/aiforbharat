@@ -3,7 +3,7 @@ export const MOCK_GRIEVANCES = [
     id: "GRV-2024-1234",
     title: "Water supply disruption",
     category: "Water & Sanitation",
-    description: "No water supply for 3 days in Sector 4, Lucknow",
+    description: "No water supply for 3 days in Sector 4, affecting 200+ households",
     location: "Sector 4, Lucknow, Uttar Pradesh",
     status: "Resolved",
     date: "2024-01-15",
@@ -14,14 +14,14 @@ export const MOCK_GRIEVANCES = [
       { step: "Received", done: true, date: "Jan 15" },
       { step: "Assigned", done: true, date: "Jan 16" },
       { step: "In Progress", done: true, date: "Jan 18" },
-      { step: "Resolved", done: true, date: "Jan 20" },
-    ],
+      { step: "Resolved", done: true, date: "Jan 20" }
+    ]
   },
   {
     id: "GRV-2024-1235",
-    title: "Road repair needed",
+    title: "Road repair needed urgently",
     category: "Roads & Infrastructure",
-    description: "Large pothole on Main Market Road causing accidents",
+    description: "Large pothole on Main Market Road causing accidents daily",
     location: "Main Market Road, Lucknow, UP",
     status: "In Progress",
     date: "2024-01-18",
@@ -32,14 +32,14 @@ export const MOCK_GRIEVANCES = [
       { step: "Received", done: true, date: "Jan 18" },
       { step: "Assigned", done: true, date: "Jan 19" },
       { step: "In Progress", done: true, date: "Jan 21" },
-      { step: "Resolved", done: false, date: "" },
-    ],
+      { step: "Resolved", done: false, date: "" }
+    ]
   },
   {
     id: "GRV-2024-1236",
-    title: "Street light not working",
+    title: "Street lights not working",
     category: "Electricity",
-    description: "Street lights on Gandhi Nagar Colony off for 1 week",
+    description: "Street lights on Gandhi Nagar Colony have been off for over a week",
     location: "Gandhi Nagar, Lucknow, UP",
     status: "Pending",
     date: "2024-01-22",
@@ -50,14 +50,14 @@ export const MOCK_GRIEVANCES = [
       { step: "Received", done: true, date: "Jan 22" },
       { step: "Assigned", done: false, date: "" },
       { step: "In Progress", done: false, date: "" },
-      { step: "Resolved", done: false, date: "" },
-    ],
+      { step: "Resolved", done: false, date: "" }
+    ]
   },
   {
     id: "GRV-2024-1237",
     title: "Garbage not collected",
     category: "Sanitation",
-    description: "Garbage not collected for 5 days near Bus Stand",
+    description: "Garbage not collected for 5 days near Bus Stand area, causing health hazard",
     location: "Bus Stand Area, Lucknow, UP",
     status: "Pending",
     date: "2024-01-23",
@@ -68,14 +68,14 @@ export const MOCK_GRIEVANCES = [
       { step: "Received", done: false, date: "" },
       { step: "Assigned", done: false, date: "" },
       { step: "In Progress", done: false, date: "" },
-      { step: "Resolved", done: false, date: "" },
-    ],
+      { step: "Resolved", done: false, date: "" }
+    ]
   },
   {
     id: "GRV-2024-1238",
     title: "School building roof damage",
     category: "Education",
-    description: "Govt school roof leaking, children unable to study",
+    description: "Govt primary school roof leaking badly, children unable to study during rain",
     location: "Primary School No. 5, Lucknow, UP",
     status: "In Progress",
     date: "2024-01-20",
@@ -86,9 +86,99 @@ export const MOCK_GRIEVANCES = [
       { step: "Received", done: true, date: "Jan 20" },
       { step: "Assigned", done: true, date: "Jan 21" },
       { step: "In Progress", done: true, date: "Jan 24" },
-      { step: "Resolved", done: false, date: "" },
-    ],
+      { step: "Resolved", done: false, date: "" }
+    ]
   },
+  {
+    id: "GRV-2024-1239",
+    title: "Sewage overflow on main road",
+    category: "Water & Sanitation",
+    description: "Drainage pipe burst causing sewage overflow near Hazratganj market for 2 days",
+    location: "Hazratganj, Lucknow, UP",
+    status: "Resolved",
+    date: "2024-01-10",
+    lastUpdate: "2024-01-13",
+    assignedTo: "Jal Nigam",
+    timeline: [
+      { step: "Submitted", done: true, date: "Jan 10" },
+      { step: "Received", done: true, date: "Jan 10" },
+      { step: "Assigned", done: true, date: "Jan 11" },
+      { step: "In Progress", done: true, date: "Jan 11" },
+      { step: "Resolved", done: true, date: "Jan 13" }
+    ]
+  },
+  {
+    id: "GRV-2024-1240",
+    title: "Public hospital medicine shortage",
+    category: "Healthcare",
+    description: "District hospital running out of basic medicines like paracetamol and antibiotics",
+    location: "District Hospital, Lucknow, UP",
+    status: "In Progress",
+    date: "2024-01-21",
+    lastUpdate: "2024-01-25",
+    assignedTo: "Health Department",
+    timeline: [
+      { step: "Submitted", done: true, date: "Jan 21" },
+      { step: "Received", done: true, date: "Jan 21" },
+      { step: "Assigned", done: true, date: "Jan 22" },
+      { step: "In Progress", done: true, date: "Jan 25" },
+      { step: "Resolved", done: false, date: "" }
+    ]
+  },
+  {
+    id: "GRV-2024-1241",
+    title: "Tree fallen blocking road",
+    category: "Roads & Infrastructure",
+    description: "Large tree fell on Vikas Nagar road after storm, blocking entire lane since morning",
+    location: "Vikas Nagar, Lucknow, UP",
+    status: "Resolved",
+    date: "2024-01-19",
+    lastUpdate: "2024-01-19",
+    assignedTo: "Municipal Corporation",
+    timeline: [
+      { step: "Submitted", done: true, date: "Jan 19" },
+      { step: "Received", done: true, date: "Jan 19" },
+      { step: "Assigned", done: true, date: "Jan 19" },
+      { step: "In Progress", done: true, date: "Jan 19" },
+      { step: "Resolved", done: true, date: "Jan 19" }
+    ]
+  },
+  {
+    id: "GRV-2024-1242",
+    title: "Public toilet non-functional",
+    category: "Sanitation",
+    description: "Swachh Bharat public toilet at Railway Station has been locked and non-functional for 2 weeks",
+    location: "Lucknow Railway Station, UP",
+    status: "Pending",
+    date: "2024-01-24",
+    lastUpdate: "2024-01-24",
+    assignedTo: "Pending Assignment",
+    timeline: [
+      { step: "Submitted", done: true, date: "Jan 24" },
+      { step: "Received", done: false, date: "" },
+      { step: "Assigned", done: false, date: "" },
+      { step: "In Progress", done: false, date: "" },
+      { step: "Resolved", done: false, date: "" }
+    ]
+  },
+  {
+    id: "GRV-2024-1243",
+    title: "Illegal construction blocking public lane",
+    category: "Other",
+    description: "Neighbour has illegally extended boundary wall blocking the public footpath completely",
+    location: "Indira Nagar, Lucknow, UP",
+    status: "In Progress",
+    date: "2024-01-17",
+    lastUpdate: "2024-01-23",
+    assignedTo: "Town Planning Dept",
+    timeline: [
+      { step: "Submitted", done: true, date: "Jan 17" },
+      { step: "Received", done: true, date: "Jan 17" },
+      { step: "Assigned", done: true, date: "Jan 18" },
+      { step: "In Progress", done: true, date: "Jan 23" },
+      { step: "Resolved", done: false, date: "" }
+    ]
+  }
 ];
 
 export const MOCK_SCHEMES = [
@@ -101,7 +191,7 @@ export const MOCK_SCHEMES = [
     eligibility: ["Farmer", "Land owner", "Aadhaar linked bank account"],
     documents: ["Aadhaar Card", "Land ownership papers", "Bank account details"],
     eligible: true,
-    description: "Direct income support of ₹6,000/year to farmer families",
+    description: "Direct income support of ₹6,000/year in 3 installments to farmer families"
   },
   {
     id: 2,
@@ -112,7 +202,7 @@ export const MOCK_SCHEMES = [
     eligibility: ["Age 18-50", "Bank account holder", "Aadhaar linked"],
     documents: ["Aadhaar Card", "Bank passbook", "Nominee details"],
     eligible: true,
-    description: "Life insurance cover of ₹2 lakh at just ₹436/year",
+    description: "Life insurance cover of ₹2 lakh at just ₹436/year premium"
   },
   {
     id: 3,
@@ -123,7 +213,7 @@ export const MOCK_SCHEMES = [
     eligibility: ["Below poverty line", "SECC database listed", "No private insurance"],
     documents: ["Aadhaar Card", "Ration Card", "Income certificate"],
     eligible: true,
-    description: "Health insurance of ₹5 lakh per family per year",
+    description: "Cashless health insurance of ₹5 lakh per family per year at empanelled hospitals"
   },
   {
     id: 4,
@@ -134,8 +224,74 @@ export const MOCK_SCHEMES = [
     eligibility: ["Age 18-70", "Savings bank account", "Aadhaar linked"],
     documents: ["Aadhaar Card", "Bank account details"],
     eligible: false,
-    description: "Accidental death and disability cover for ₹20/year",
+    description: "Accidental death and disability cover for just ₹20/year premium"
   },
+  {
+    id: 5,
+    name: "PM Ujjwala",
+    fullName: "Pradhan Mantri Ujjwala Yojana",
+    benefit: "Free LPG connection",
+    category: "Energy",
+    eligibility: ["BPL household", "Adult woman member", "No existing LPG connection"],
+    documents: ["Aadhaar Card", "BPL Ration Card", "Bank account details"],
+    eligible: true,
+    description: "Free LPG gas connection to women from below poverty line households"
+  },
+  {
+    id: 6,
+    name: "PM Awas Yojana",
+    fullName: "Pradhan Mantri Awas Yojana (Gramin)",
+    benefit: "₹1.2 Lakh housing grant",
+    category: "Housing",
+    eligibility: ["Homeless or kutcha house", "Rural resident", "Not availed housing scheme before"],
+    documents: ["Aadhaar Card", "Ration Card", "Land documents", "Bank account"],
+    eligible: false,
+    description: "Financial assistance of ₹1.2 lakh to build a pucca house in rural areas"
+  },
+  {
+    id: 7,
+    name: "Sukanya Samriddhi",
+    fullName: "Sukanya Samriddhi Yojana",
+    benefit: "8.2% interest rate",
+    category: "Savings",
+    eligibility: ["Girl child below 10 years", "Parent/guardian account", "Indian resident"],
+    documents: ["Girl child birth certificate", "Parent Aadhaar", "Address proof"],
+    eligible: false,
+    description: "High-interest savings scheme for girl child's education and marriage expenses"
+  },
+  {
+    id: 8,
+    name: "PM Mudra Yojana",
+    fullName: "Pradhan Mantri Mudra Yojana",
+    benefit: "Loan up to ₹10 Lakh",
+    category: "Business",
+    eligibility: ["Non-farm small business", "No existing loan default", "Valid business plan"],
+    documents: ["Aadhaar Card", "Business proof", "Bank statements", "PAN Card"],
+    eligible: true,
+    description: "Collateral-free loans from ₹50,000 to ₹10 lakh for small and micro enterprises"
+  },
+  {
+    id: 9,
+    name: "PM Fasal Bima",
+    fullName: "Pradhan Mantri Fasal Bima Yojana",
+    benefit: "Crop loss compensation",
+    category: "Agriculture",
+    eligibility: ["Farmer with crop loan", "Land owner or tenant farmer", "Enrolled before sowing"],
+    documents: ["Aadhaar Card", "Land records", "Bank account", "Crop sowing certificate"],
+    eligible: true,
+    description: "Crop insurance covering losses due to natural calamities, pests and diseases"
+  },
+  {
+    id: 10,
+    name: "NSP Scholarship",
+    fullName: "National Scholarship Portal — Pre-Matric & Post-Matric",
+    benefit: "₹500–₹1,200/month",
+    category: "Education",
+    eligibility: ["SC/ST/OBC student", "Family income below ₹2.5 lakh/year", "Enrolled in govt school/college"],
+    documents: ["Aadhaar Card", "Income certificate", "Caste certificate", "Marksheet", "Bank account"],
+    eligible: false,
+    description: "Monthly stipend for SC/ST/OBC students from pre-matric through post-matric education"
+  }
 ];
 
 export const ADMIN_STATS = {
