@@ -122,6 +122,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -129,43 +130,98 @@
 
 /* WhatsApp Simulator Animations */
 @keyframes waveform {
-  0%, 100% { height: 4px; }
-  50% { height: 16px; }
+
+  0%,
+  100% {
+    height: 4px;
+  }
+
+  50% {
+    height: 16px;
+  }
 }
 
 @keyframes typing-dots {
-  0%, 60%, 100% { opacity: 0; transform: translateY(0); }
-  30% { opacity: 1; transform: translateY(-4px); }
+
+  0%,
+  60%,
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translateY(-4px);
+  }
 }
 
 @keyframes pulse-ring {
-  0% { transform: scale(0.8); opacity: 1; }
-  100% { transform: scale(2); opacity: 0; }
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
 }
 
 @keyframes slide-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes progress-fill {
-  from { width: 0%; }
-  to { width: 100%; }
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
 }
 
 @keyframes confetti {
-  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-100px) rotate(720deg);
+    opacity: 0;
+  }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .animate-waveform {
@@ -186,4 +242,205 @@
 
 .animate-pulse-ring {
   animation: pulse-ring 1.5s ease-out infinite;
+}
+
+/* ============================================================
+   Global Dark Mode Overrides
+   Since pages use hardcoded Tailwind color classes (bg-white,
+   text-gray-900, etc.), we override them globally when .dark
+   is active on <html>. This avoids adding dark: variants
+   to every element across all 6 pages.
+   ============================================================ */
+
+/* Page wrapper backgrounds */
+.dark .bg-gradient-to-br.from-green-50 {
+  --tw-gradient-from: #0f172a;
+}
+
+.dark .bg-gradient-to-br.via-white {
+  --tw-gradient-via: #1e293b;
+}
+
+.dark .bg-gradient-to-br.to-emerald-50 {
+  --tw-gradient-to: #0f172a;
+}
+
+/* Surface colors */
+.dark .bg-white {
+  background-color: #1e293b !important;
+}
+
+.dark .bg-gray-50 {
+  background-color: #1a2433 !important;
+}
+
+.dark .bg-gray-50\/50 {
+  background-color: rgba(26, 36, 51, 0.5) !important;
+}
+
+.dark .bg-gray-100 {
+  background-color: #2d3748 !important;
+}
+
+/* Text colors */
+.dark .text-gray-900 {
+  color: #e2e8f0 !important;
+}
+
+.dark .text-gray-800 {
+  color: #cbd5e1 !important;
+}
+
+.dark .text-gray-700 {
+  color: #cbd5e1 !important;
+}
+
+.dark .text-gray-600 {
+  color: #94a3b8 !important;
+}
+
+.dark .text-gray-500 {
+  color: #94a3b8 !important;
+}
+
+.dark .text-gray-400 {
+  color: #64748b !important;
+}
+
+/* Borders */
+.dark .border-gray-100 {
+  border-color: #334155 !important;
+}
+
+.dark .border-gray-200 {
+  border-color: #334155 !important;
+}
+
+.dark .border-gray-50 {
+  border-color: #2d3748 !important;
+}
+
+/* Accent backgrounds in dark mode */
+.dark .bg-green-50 {
+  background-color: rgba(34, 197, 94, 0.1) !important;
+}
+
+.dark .bg-green-100 {
+  background-color: rgba(34, 197, 94, 0.15) !important;
+}
+
+.dark .bg-blue-50 {
+  background-color: rgba(59, 130, 246, 0.1) !important;
+}
+
+.dark .bg-blue-100 {
+  background-color: rgba(59, 130, 246, 0.15) !important;
+}
+
+.dark .bg-yellow-50 {
+  background-color: rgba(234, 179, 8, 0.1) !important;
+}
+
+.dark .bg-yellow-100 {
+  background-color: rgba(234, 179, 8, 0.15) !important;
+}
+
+.dark .bg-red-50 {
+  background-color: rgba(239, 68, 68, 0.1) !important;
+}
+
+.dark .bg-red-100 {
+  background-color: rgba(239, 68, 68, 0.15) !important;
+}
+
+.dark .bg-purple-50 {
+  background-color: rgba(168, 85, 247, 0.1) !important;
+}
+
+.dark .bg-orange-50 {
+  background-color: rgba(249, 115, 22, 0.1) !important;
+}
+
+.dark .bg-orange-100 {
+  background-color: rgba(249, 115, 22, 0.15) !important;
+}
+
+/* Accent border colors in dark mode */
+.dark .border-green-100 {
+  border-color: rgba(34, 197, 94, 0.2) !important;
+}
+
+.dark .border-green-200 {
+  border-color: rgba(34, 197, 94, 0.2) !important;
+}
+
+.dark .border-blue-100 {
+  border-color: rgba(59, 130, 246, 0.2) !important;
+}
+
+.dark .border-orange-100 {
+  border-color: rgba(249, 115, 22, 0.2) !important;
+}
+
+/* Navbar specific */
+.dark .bg-white\/80 {
+  background-color: rgba(15, 23, 42, 0.8) !important;
+}
+
+/* How It Works section */
+.dark .bg-gradient-to-br.from-green-50.to-emerald-50 {
+  background: linear-gradient(to bottom right, rgba(34, 197, 94, 0.08), rgba(16, 185, 129, 0.08)) !important;
+}
+
+.dark .bg-gradient-to-br.from-blue-50.to-sky-50 {
+  background: linear-gradient(to bottom right, rgba(59, 130, 246, 0.08), rgba(14, 165, 233, 0.08)) !important;
+}
+
+/* Login page */
+.dark .bg-gradient-to-br.from-green-50.via-white.to-emerald-50 {
+  background: linear-gradient(to bottom right, #0f172a, #1e293b, #0f172a) !important;
+}
+
+/* Cards hover */
+.dark .hover\:bg-gray-50:hover {
+  background-color: #2d3748 !important;
+}
+
+/* White section override */
+.dark section.bg-white {
+  background-color: #0f172a !important;
+}
+
+/* Shadows look better with darker color in dark mode */
+.dark .shadow-sm {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark .shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4) !important;
+}
+
+.dark .shadow-xl {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4) !important;
+}
+
+.dark .shadow-2xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Select dropdowns */
+.dark select {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-color: #334155 !important;
+}
+
+.dark input {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+}
+
+.dark textarea {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
 }

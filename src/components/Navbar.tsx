@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Bot, Globe, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { LANGUAGES } from "@/lib/constants";
 import { useState } from "react";
 
@@ -22,7 +23,7 @@ export default function Navbar() {
     const [selectedLang, setSelectedLang] = useState("English");
 
     return (
-        <nav className="sticky top-0 z-50 backdrop-blur-md bg-white/80 border-b border-border/50 shadow-sm">
+        <nav className="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-gray-900/80 border-b border-border/50 shadow-sm">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
@@ -98,11 +99,14 @@ export default function Navbar() {
 
                         {/* Mobile Menu Toggle */}
                         <button
-                            className="md:hidden p-2 rounded-lg hover:bg-gray-100"
+                            className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                         >
                             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                         </button>
+
+                        {/* Theme Toggle */}
+                        <ThemeToggle />
                     </div>
                 </div>
 
