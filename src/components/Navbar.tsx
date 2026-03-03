@@ -24,9 +24,9 @@ export default function Navbar() {
 
     return (
         <nav className="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-gray-900/80 border-b border-border/50 shadow-sm">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-16">
-                    {/* Logo */}
+            <div className="px-4 sm:px-6 lg:px-8">
+                <div className="flex items-center justify-between h-16 relative">
+                    {/* Logo — Extreme Left */}
                     <Link href="/" className="flex items-center gap-2 group">
                         <div className="w-9 h-9 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-lg shadow-green-500/20 group-hover:shadow-green-500/40 transition-shadow">
                             <Bot className="w-5 h-5 text-white" />
@@ -37,8 +37,8 @@ export default function Navbar() {
                         </div>
                     </Link>
 
-                    {/* Desktop Nav Links */}
-                    <div className="hidden md:flex items-center gap-1">
+                    {/* Desktop Nav Links — Centered */}
+                    <div className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.href}
@@ -53,7 +53,7 @@ export default function Navbar() {
                         ))}
                     </div>
 
-                    {/* Right Side */}
+                    {/* Right Side — Extreme Right */}
                     <div className="flex items-center gap-3">
                         {/* Language Selector */}
                         <div className="relative hidden sm:block">
@@ -81,11 +81,6 @@ export default function Navbar() {
                                 </div>
                             )}
                         </div>
-
-                        {/* AWS Badge */}
-                        <span className="hidden lg:inline-flex items-center gap-1 px-2 py-1 bg-orange-50 text-orange-600 text-xs font-medium rounded-full border border-orange-100">
-                            ⚡ AWS Powered
-                        </span>
 
                         {/* Login Button */}
                         <Link href="/login">
