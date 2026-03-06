@@ -39,13 +39,10 @@ export default function AdminOverviewPage() {
 
             {/* Page Header */}
             <div className="mb-6">
-                <p
-                    className="text-[11px] font-semibold tracking-[0.12em] uppercase mb-1"
-                    style={{ color: "#64748b" }}
-                >
+                <p className="text-[11px] font-semibold tracking-[0.12em] uppercase mb-1 text-slate-500 dark:text-slate-400">
                     Overview
                 </p>
-                <h1 className="text-2xl font-bold" style={{ color: "#1e293b" }}>
+                <h1 className="text-2xl font-bold text-slate-800 dark:text-slate-100">
                     Dashboard
                 </h1>
             </div>
@@ -115,15 +112,9 @@ export default function AdminOverviewPage() {
                 {/* Right: Broadcast Reach + Pending Approvals (2 cols) */}
                 <div className="col-span-2">
                     {/* Broadcast Reach Widget */}
-                    <div
-                        className="bg-white rounded-xl border p-5"
-                        style={{ borderColor: "#e2e8f0" }}
-                    >
+                    <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-5">
                         <div className="flex items-center justify-between mb-1">
-                            <h3
-                                className="text-sm font-semibold"
-                                style={{ color: "#1e293b" }}
-                            >
+                            <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-100">
                                 Broadcast Reach
                             </h3>
                             <span
@@ -138,7 +129,7 @@ export default function AdminOverviewPage() {
                         </div>
 
                         <div className="mb-3">
-                            <p className="text-2xl font-bold" style={{ color: "#1e293b" }}>
+                            <p className="text-2xl font-bold text-slate-800 dark:text-slate-100">
                                 48,291{" "}
                                 <span
                                     className="text-xs font-medium"
@@ -147,10 +138,7 @@ export default function AdminOverviewPage() {
                                     +8.4%
                                 </span>
                             </p>
-                            <p
-                                className="text-[11px] uppercase tracking-wide"
-                                style={{ color: "#64748b" }}
-                            >
+                            <p className="text-[11px] uppercase tracking-wide text-slate-500 dark:text-slate-400">
                                 Messages Delivered
                             </p>
                         </div>
@@ -190,39 +178,21 @@ export default function AdminOverviewPage() {
                         </div>
 
                         {/* Stats below chart */}
-                        <div
-                            className="flex items-center gap-4 pt-3 border-t"
-                            style={{ borderColor: "#f1f5f9" }}
-                        >
+                        <div className="flex items-center gap-4 pt-3 border-t border-slate-100 dark:border-slate-700">
                             <div>
-                                <p
-                                    className="text-[11px] uppercase tracking-wide"
-                                    style={{ color: "#64748b" }}
-                                >
+                                <p className="text-[11px] uppercase tracking-wide text-slate-500 dark:text-slate-400">
                                     Read Rate
                                 </p>
-                                <p
-                                    className="text-sm font-bold"
-                                    style={{ color: "#1e293b" }}
-                                >
+                                <p className="text-sm font-bold text-slate-800 dark:text-slate-100">
                                     {stats.readRate}%
                                 </p>
                             </div>
-                            <div
-                                className="w-px h-8"
-                                style={{ backgroundColor: "#e2e8f0" }}
-                            />
+                            <div className="w-px h-8 bg-slate-200 dark:bg-slate-700" />
                             <div>
-                                <p
-                                    className="text-[11px] uppercase tracking-wide"
-                                    style={{ color: "#64748b" }}
-                                >
+                                <p className="text-[11px] uppercase tracking-wide text-slate-500 dark:text-slate-400">
                                     Replies
                                 </p>
-                                <p
-                                    className="text-sm font-bold"
-                                    style={{ color: "#1e293b" }}
-                                >
+                                <p className="text-sm font-bold text-slate-800 dark:text-slate-100">
                                     {stats.totalReplies.toLocaleString()}{" "}
                                     <span
                                         className="text-xs font-medium"
@@ -242,10 +212,7 @@ export default function AdminOverviewPage() {
 
             {/* Bottom Row: Quick Actions */}
             <div className="mb-2">
-                <h3
-                    className="text-sm font-semibold mb-3"
-                    style={{ color: "#1e293b" }}
-                >
+                <h3 className="text-sm font-semibold mb-3 text-slate-800 dark:text-slate-100">
                     Quick Actions
                 </h3>
                 <QuickActionsBar

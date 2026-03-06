@@ -18,28 +18,23 @@ const badgeStyles: Record<string, { bg: string; text: string }> = {
 
 export default function RecentActivityFeed() {
     return (
-        <div
-            className="bg-white rounded-xl border"
-            style={{ borderColor: "#e2e8f0" }}
-        >
+        <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
             {/* Header */}
-            <div className="flex items-center justify-between px-5 py-4 border-b"
-                style={{ borderColor: "#e2e8f0" }}
-            >
-                <h3 className="text-sm font-semibold" style={{ color: "#1e293b" }}>
+            <div className="flex items-center justify-between px-5 py-4 border-b border-slate-200 dark:border-slate-700">
+                <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-100">
                     Recent Activity
                 </h3>
-                <button className="text-xs font-medium" style={{ color: "#22c55e" }}>
+                <button className="text-xs font-medium text-green-500">
                     View all →
                 </button>
             </div>
 
             {/* Activity Items */}
-            <div className="divide-y" style={{ borderColor: "#f1f5f9" }}>
+            <div className="divide-y divide-slate-100 dark:divide-slate-700">
                 {RECENT_ACTIVITY.map((item) => (
                     <div
                         key={item.id}
-                        className="flex items-center gap-3 px-5 py-3.5 hover:bg-gray-50/50 transition-colors"
+                        className="flex items-center gap-3 px-5 py-3.5 hover:bg-slate-50/50 dark:hover:bg-slate-700/50 transition-colors"
                     >
                         {/* Dot */}
                         <div
@@ -49,16 +44,16 @@ export default function RecentActivityFeed() {
 
                         {/* Content */}
                         <div className="flex-1 min-w-0">
-                            <p className="text-sm font-medium" style={{ color: "#1e293b" }}>
+                            <p className="text-sm font-medium text-slate-800 dark:text-slate-100">
                                 {item.title}
                             </p>
-                            <p className="text-xs truncate" style={{ color: "#64748b" }}>
+                            <p className="text-xs truncate text-slate-500 dark:text-slate-400">
                                 {item.subtitle}
                             </p>
                         </div>
 
                         {/* Time */}
-                        <span className="text-[11px] shrink-0" style={{ color: "#94a3b8" }}>
+                        <span className="text-[11px] shrink-0 text-slate-400 dark:text-slate-500">
                             {item.time}
                         </span>
 

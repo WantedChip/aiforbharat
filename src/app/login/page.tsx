@@ -1,14 +1,17 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect, useCallback, Suspense } from "react";
 import { Phone, Lock, Loader2, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { loginUser } from "@/lib/auth";
 
-export default function LoginPage() {
+function LoginPageInner() {
     const router = useRouter();
+    const searchParams = useSearchParams();
+    const redirectTo = searchParams.get("redirect") || "/dashboard";
     const [step, setStep] = useState<"phone" | "otp" | "verifying">("phone");
     const [phone, setPhone] = useState("");
     const [otp, setOtp] = useState(["", "", "", "", "", ""]);
@@ -43,10 +46,11 @@ export default function LoginPage() {
         if (otpValue.length === 6) {
             setStep("verifying");
             setTimeout(() => {
-                router.push("/dashboard");
+                loginUser(phone);
+                router.push(redirectTo);
             }, 2000);
         }
-    }, [otp, router]);
+    }, [otp, phone, router, redirectTo]);
 
     useEffect(() => {
         if (otp.every((d) => d !== "")) {
@@ -177,5 +181,13 @@ export default function LoginPage() {
                 </div>
             </div>
         </div>
+    );
+}
+
+export default function LoginPage() {
+    return (
+        <Suspense fallback={null}>
+            <LoginPageInner />
+        </Suspense>
     );
 }

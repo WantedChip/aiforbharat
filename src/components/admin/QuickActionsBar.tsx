@@ -43,8 +43,7 @@ export default function QuickActionsBar({ onAction }: QuickActionsBarProps) {
             {actions.map((action) => (
                 <button
                     key={action.label}
-                    className="bg-white rounded-xl border p-4 text-left hover:shadow-md transition-all group"
-                    style={{ borderColor: "#e2e8f0" }}
+                    className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 text-left hover:shadow-md transition-all group"
                     onClick={() => onAction?.(action.label)}
                 >
                     <div
@@ -53,10 +52,10 @@ export default function QuickActionsBar({ onAction }: QuickActionsBarProps) {
                     >
                         <action.icon className="w-[18px] h-[18px]" style={{ color: action.color }} />
                     </div>
-                    <p className="text-sm font-semibold" style={{ color: "#1e293b" }}>
+                    <p className="text-sm font-semibold text-slate-800 dark:text-slate-100">
                         {action.label}
                     </p>
-                    <p className="text-xs mt-0.5" style={{ color: "#64748b" }}>
+                    <p className="text-xs mt-0.5 text-slate-500 dark:text-slate-400">
                         {action.subtitle}
                     </p>
                 </button>

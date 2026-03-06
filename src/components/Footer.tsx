@@ -1,4 +1,5 @@
 import { AWS_SERVICES } from "@/lib/constants";
+import Link from "next/link";
 
 export default function Footer() {
     return (
@@ -32,13 +33,20 @@ export default function Footer() {
                         </div>
                         <span className="text-sm font-semibold text-white">Neta-ji | Civic Connect</span>
                     </div>
-                    <p className="text-xs text-gray-500 text-center">
-                        Built for Bharat 🇮🇳 | AI for Bharat Hackathon | Team BEER BROS
-                    </p>
-                    <p className="text-xs text-gray-500">
-                        Powered by{" "}
-                        <span className="text-orange-400 font-medium">Amazon Web Services</span>
-                    </p>
+                    <div className="flex flex-col items-center gap-1">
+                        <p className="text-xs text-gray-500 text-center">
+                            Built for Bharat 🇮🇳 | AI for Bharat Hackathon | Team BEER BROS
+                        </p>
+                        <p className="text-xs text-gray-500">
+                            Powered by{" "}
+                            <span className="text-orange-400 font-medium">Amazon Web Services</span>
+                        </p>
+                    </div>
+                    <div>
+                        <Link href="/admin/login" className="text-xs text-gray-500 hover:text-gray-300 transition-colors">
+                            Admin Portal &rarr;
+                        </Link>
+                    </div>
                 </div>
             </div>
         </footer>

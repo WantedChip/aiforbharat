@@ -9,12 +9,9 @@ interface PendingApprovalsWidgetProps {
 
 export default function PendingApprovalsWidget({ count }: PendingApprovalsWidgetProps) {
     return (
-        <div
-            className="bg-white rounded-xl border p-4 mt-4"
-            style={{ borderColor: "#e2e8f0" }}
-        >
+        <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 mt-4">
             <div className="flex items-center justify-between mb-3">
-                <h4 className="text-sm font-semibold" style={{ color: "#1e293b" }}>
+                <h4 className="text-sm font-semibold text-slate-800 dark:text-slate-100">
                     Pending Approvals
                 </h4>
                 <span
@@ -33,25 +30,22 @@ export default function PendingApprovalsWidget({ count }: PendingApprovalsWidget
                     >
                         <div className="flex items-center gap-2">
                             {item.type === "scheme" ? (
-                                <FileText className="w-3.5 h-3.5" style={{ color: "#64748b" }} />
+                                <FileText className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
                             ) : (
-                                <AlertTriangle className="w-3.5 h-3.5" style={{ color: "#f59e0b" }} />
+                                <AlertTriangle className="w-3.5 h-3.5 text-amber-500" />
                             )}
-                            <span className="text-sm" style={{ color: "#1e293b" }}>
+                            <span className="text-sm text-slate-800 dark:text-slate-200">
                                 {item.label}
                             </span>
                         </div>
-                        <button className="text-xs font-medium" style={{ color: "#22c55e" }}>
+                        <button className="text-xs font-medium text-green-500">
                             Review →
                         </button>
                     </div>
                 ))}
             </div>
 
-            <button
-                className="w-full text-center text-xs font-medium mt-3 pt-2 border-t"
-                style={{ color: "#22c55e", borderColor: "#f1f5f9" }}
-            >
+            <button className="w-full text-center text-xs font-medium mt-3 pt-2 border-t border-slate-100 dark:border-slate-700 text-green-500">
                 View All →
             </button>
         </div>

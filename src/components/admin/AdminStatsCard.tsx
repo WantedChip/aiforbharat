@@ -30,10 +30,7 @@ export default function AdminStatsCard({
         trendDirection === "up" ? "↑" : trendDirection === "down" ? "↓" : "";
 
     return (
-        <div
-            className="bg-white rounded-xl border p-5 relative overflow-hidden"
-            style={{ borderColor: "#e2e8f0" }}
-        >
+        <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-5 relative overflow-hidden">
             {/* Sparkline in top-right corner */}
             {sparklineData && sparklineData.length > 0 && (
                 <div className="absolute top-3 right-3 w-[60px] h-[30px] opacity-60">
@@ -52,18 +49,12 @@ export default function AdminStatsCard({
             )}
 
             {/* Label */}
-            <p
-                className="text-[11px] font-semibold tracking-[0.08em] uppercase mb-2"
-                style={{ color: "#64748b" }}
-            >
+            <p className="text-[11px] font-semibold tracking-[0.08em] uppercase mb-2 text-slate-500 dark:text-slate-400">
                 {label}
             </p>
 
             {/* Value */}
-            <p
-                className="text-2xl font-bold mb-1"
-                style={{ color: "#1e293b" }}
-            >
+            <p className="text-2xl font-bold mb-1 text-slate-800 dark:text-slate-100">
                 {value}
             </p>
 

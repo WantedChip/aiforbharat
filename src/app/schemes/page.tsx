@@ -9,8 +9,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SchemeCard from "@/components/SchemeCard";
 import VoiceDemo from "@/components/VoiceDemo";
+import ProtectedRoute from "@/components/ProtectedRoute";
 
-export default function SchemesPage() {
+function SchemesPageInner() {
     const [step, setStep] = useState(0);
     const [occupation, setOccupation] = useState("");
     const [age, setAge] = useState("");
@@ -136,8 +137,8 @@ export default function SchemesPage() {
                                     <div
                                         key={s}
                                         className={`w-2.5 h-2.5 rounded-full transition-all ${s <= step
-                                                ? "bg-green-500 scale-110"
-                                                : "bg-gray-200"
+                                            ? "bg-green-500 scale-110"
+                                            : "bg-gray-200"
                                             }`}
                                     />
                                 ))}
@@ -158,8 +159,8 @@ export default function SchemesPage() {
                                                     setStep(1);
                                                 }}
                                                 className={`px-4 py-3 rounded-xl border text-sm font-medium transition-all hover:border-green-400 hover:bg-green-50 ${occupation === o
-                                                        ? "border-green-500 bg-green-50 text-green-700"
-                                                        : "border-gray-200 text-gray-600"
+                                                    ? "border-green-500 bg-green-50 text-green-700"
+                                                    : "border-gray-200 text-gray-600"
                                                     }`}
                                             >
                                                 {o}
@@ -209,8 +210,8 @@ export default function SchemesPage() {
                                                     setStep(3);
                                                 }}
                                                 className={`px-4 py-3 rounded-xl border text-sm font-medium transition-all hover:border-green-400 hover:bg-green-50 ${income === range
-                                                        ? "border-green-500 bg-green-50 text-green-700"
-                                                        : "border-gray-200 text-gray-600"
+                                                    ? "border-green-500 bg-green-50 text-green-700"
+                                                    : "border-gray-200 text-gray-600"
                                                     }`}
                                             >
                                                 {range}
@@ -276,5 +277,13 @@ export default function SchemesPage() {
             </div>
             <Footer />
         </div>
+    );
+}
+
+export default function SchemesPage() {
+    return (
+        <ProtectedRoute>
+            <SchemesPageInner />
+        </ProtectedRoute>
     );
 }

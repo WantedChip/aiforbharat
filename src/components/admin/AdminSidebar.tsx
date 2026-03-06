@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { logoutAdmin } from "@/lib/auth";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import {
     LayoutDashboard,
     FileText,
@@ -25,6 +27,12 @@ const navItems = [
 
 export default function AdminSidebar() {
     const pathname = usePathname();
+    const router = useRouter();
+
+    const handleLogout = () => {
+        logoutAdmin();
+        router.push("/");
+    };
 
     const isActive = (href: string) => {
         if (href === "/admin") return pathname === "/admin";
@@ -32,9 +40,7 @@ export default function AdminSidebar() {
     };
 
     return (
-        <aside className="fixed left-0 top-0 w-[260px] h-screen flex flex-col"
-            style={{ backgroundColor: "#0f172a" }}
-        >
+        <aside className="fixed left-0 top-0 w-[260px] h-screen flex flex-col bg-slate-900 border-r border-slate-800">
             {/* Logo */}
             <div className="px-5 pt-6 pb-2">
                 <div className="flex items-center gap-3 mb-1">
@@ -45,7 +51,7 @@ export default function AdminSidebar() {
                     </div>
                     <div>
                         <p className="text-white font-bold text-[15px] leading-tight">Neta-ji</p>
-                        <p className="text-[11px] leading-tight" style={{ color: "#64748b" }}>
+                        <p className="text-[11px] leading-tight text-slate-400">
                             Governance Console
                         </p>
                     </div>
@@ -54,9 +60,7 @@ export default function AdminSidebar() {
 
             {/* Section Label */}
             <div className="px-5 pt-4 pb-2">
-                <p className="text-[10px] font-semibold tracking-[0.12em] uppercase"
-                    style={{ color: "#475569" }}
-                >
+                <p className="text-[10px] font-semibold tracking-[0.12em] uppercase text-slate-500">
                     Governance Console
                 </p>
             </div>
@@ -71,7 +75,7 @@ export default function AdminSidebar() {
                             href={item.href}
                             className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all relative"
                             style={{
-                                backgroundColor: active ? "#1e293b" : "transparent",
+                                backgroundColor: active ? "rgba(30, 41, 59, 1)" : "transparent",
                                 color: active ? "#ffffff" : "#94a3b8",
                                 borderLeft: active ? "3px solid #22c55e" : "3px solid transparent",
                             }}
@@ -84,7 +88,7 @@ export default function AdminSidebar() {
             </nav>
 
             {/* Bottom: Admin Info */}
-            <div className="px-4 pb-5 pt-3" style={{ borderTop: "1px solid #1e293b" }}>
+            <div className="px-4 pb-5 pt-3 border-t border-slate-800">
                 <div className="flex items-center gap-3 mb-3">
                     <div className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold"
                         style={{ backgroundColor: "#1e293b", color: "#94a3b8" }}
@@ -93,19 +97,21 @@ export default function AdminSidebar() {
                     </div>
                     <div>
                         <p className="text-white text-sm font-medium leading-tight">Admin Operator</p>
-                        <p className="text-[11px] leading-tight" style={{ color: "#64748b" }}>
+                        <p className="text-[11px] leading-tight text-slate-500">
                             India · National Admin
                         </p>
                     </div>
                 </div>
-                <button
-                    className="flex items-center gap-2 text-xs font-medium transition-colors"
-                    style={{ color: "#64748b" }}
-                    onClick={() => { }}
-                >
-                    <LogOut className="w-3.5 h-3.5" />
-                    Logout
-                </button>
+                <div className="flex items-center justify-between">
+                    <button
+                        className="flex items-center gap-2 text-xs font-medium transition-colors text-slate-500 hover:text-slate-100"
+                        onClick={handleLogout}
+                    >
+                        <LogOut className="w-3.5 h-3.5" />
+                        Logout
+                    </button>
+                    <ThemeToggle />
+                </div>
             </div>
         </aside>
     );

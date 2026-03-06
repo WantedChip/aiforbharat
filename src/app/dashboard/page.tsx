@@ -9,10 +9,11 @@ import Footer from "@/components/Footer";
 import ComplaintCard from "@/components/ComplaintCard";
 import SchemeCard from "@/components/SchemeCard";
 import Link from "next/link";
+import ProtectedRoute from "@/components/ProtectedRoute";
 
 type FilterType = "All" | "Pending" | "In Progress" | "Resolved";
 
-export default function DashboardPage() {
+function DashboardPageInner() {
     const [activeTab, setActiveTab] = useState<"grievances" | "schemes">("grievances");
     const [filter, setFilter] = useState<FilterType>("All");
     const [toastMessage, setToastMessage] = useState("");
@@ -105,8 +106,8 @@ export default function DashboardPage() {
                             <button
                                 onClick={() => setActiveTab("grievances")}
                                 className={`flex-1 py-2.5 rounded-lg text-sm font-medium transition-all ${activeTab === "grievances"
-                                        ? "bg-green-500 text-white shadow-sm"
-                                        : "text-gray-600 hover:bg-gray-50"
+                                    ? "bg-green-500 text-white shadow-sm"
+                                    : "text-gray-600 hover:bg-gray-50"
                                     }`}
                             >
                                 <FileText className="w-4 h-4 inline mr-1.5" />
@@ -115,8 +116,8 @@ export default function DashboardPage() {
                             <button
                                 onClick={() => setActiveTab("schemes")}
                                 className={`flex-1 py-2.5 rounded-lg text-sm font-medium transition-all ${activeTab === "schemes"
-                                        ? "bg-green-500 text-white shadow-sm"
-                                        : "text-gray-600 hover:bg-gray-50"
+                                    ? "bg-green-500 text-white shadow-sm"
+                                    : "text-gray-600 hover:bg-gray-50"
                                     }`}
                             >
                                 <Search className="w-4 h-4 inline mr-1.5" />
@@ -134,8 +135,8 @@ export default function DashboardPage() {
                                             key={f}
                                             onClick={() => setFilter(f)}
                                             className={`px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-all ${filter === f
-                                                    ? "bg-green-500 text-white shadow-sm"
-                                                    : "bg-white text-gray-600 border border-gray-200 hover:bg-gray-50"
+                                                ? "bg-green-500 text-white shadow-sm"
+                                                : "bg-white text-gray-600 border border-gray-200 hover:bg-gray-50"
                                                 }`}
                                         >
                                             {f}
@@ -176,5 +177,13 @@ export default function DashboardPage() {
             </div>
             <Footer />
         </div>
+    );
+}
+
+export default function DashboardPage() {
+    return (
+        <ProtectedRoute>
+            <DashboardPageInner />
+        </ProtectedRoute>
     );
 }

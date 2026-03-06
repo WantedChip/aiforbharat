@@ -18,8 +18,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AIProcessingOverlay from "@/components/AIProcessingOverlay";
 import Link from "next/link";
+import ProtectedRoute from "@/components/ProtectedRoute";
 
-export default function ReportPage() {
+function ReportPageInner() {
     const [category, setCategory] = useState("");
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -341,5 +342,13 @@ export default function ReportPage() {
             </div>
             <Footer />
         </div>
+    );
+}
+
+export default function ReportPage() {
+    return (
+        <ProtectedRoute>
+            <ReportPageInner />
+        </ProtectedRoute>
     );
 }
