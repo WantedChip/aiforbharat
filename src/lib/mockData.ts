@@ -1,13 +1,13 @@
 export const MOCK_GRIEVANCES = [
   {
-    id: "GRV-2024-1234",
+    id: "GRV-2026-1234",
     title: "Water supply disruption",
     category: "Water & Sanitation",
     description: "No water supply for 3 days in Sector 4, affecting 200+ households",
     location: "Sector 4, Lucknow, Uttar Pradesh",
     status: "Resolved",
-    date: "2024-01-15",
-    lastUpdate: "2024-01-20",
+    date: "2026-01-15",
+    lastUpdate: "2026-01-20",
     assignedTo: "Municipal Corporation",
     timeline: [
       { step: "Submitted", done: true, date: "Jan 15" },
@@ -18,14 +18,14 @@ export const MOCK_GRIEVANCES = [
     ]
   },
   {
-    id: "GRV-2024-1235",
+    id: "GRV-2026-1235",
     title: "Road repair needed urgently",
     category: "Roads & Infrastructure",
     description: "Large pothole on Main Market Road causing accidents daily",
     location: "Main Market Road, Lucknow, UP",
     status: "In Progress",
-    date: "2024-01-18",
-    lastUpdate: "2024-01-21",
+    date: "2026-01-18",
+    lastUpdate: "2026-01-21",
     assignedTo: "PWD Department",
     timeline: [
       { step: "Submitted", done: true, date: "Jan 18" },
@@ -36,14 +36,14 @@ export const MOCK_GRIEVANCES = [
     ]
   },
   {
-    id: "GRV-2024-1236",
+    id: "GRV-2026-1236",
     title: "Street lights not working",
     category: "Electricity",
     description: "Street lights on Gandhi Nagar Colony have been off for over a week",
     location: "Gandhi Nagar, Lucknow, UP",
     status: "Pending",
-    date: "2024-01-22",
-    lastUpdate: "2024-01-22",
+    date: "2026-01-22",
+    lastUpdate: "2026-01-22",
     assignedTo: "Pending Assignment",
     timeline: [
       { step: "Submitted", done: true, date: "Jan 22" },
@@ -54,14 +54,14 @@ export const MOCK_GRIEVANCES = [
     ]
   },
   {
-    id: "GRV-2024-1237",
+    id: "GRV-2026-1237",
     title: "Garbage not collected",
     category: "Sanitation",
     description: "Garbage not collected for 5 days near Bus Stand area, causing health hazard",
     location: "Bus Stand Area, Lucknow, UP",
     status: "Pending",
-    date: "2024-01-23",
-    lastUpdate: "2024-01-23",
+    date: "2026-01-23",
+    lastUpdate: "2026-01-23",
     assignedTo: "Pending Assignment",
     timeline: [
       { step: "Submitted", done: true, date: "Jan 23" },
@@ -72,14 +72,14 @@ export const MOCK_GRIEVANCES = [
     ]
   },
   {
-    id: "GRV-2024-1238",
+    id: "GRV-2026-1238",
     title: "School building roof damage",
     category: "Education",
     description: "Govt primary school roof leaking badly, children unable to study during rain",
     location: "Primary School No. 5, Lucknow, UP",
     status: "In Progress",
-    date: "2024-01-20",
-    lastUpdate: "2024-01-24",
+    date: "2026-01-20",
+    lastUpdate: "2026-01-24",
     assignedTo: "Education Department",
     timeline: [
       { step: "Submitted", done: true, date: "Jan 20" },
@@ -90,14 +90,14 @@ export const MOCK_GRIEVANCES = [
     ]
   },
   {
-    id: "GRV-2024-1239",
+    id: "GRV-2026-1239",
     title: "Sewage overflow on main road",
     category: "Water & Sanitation",
     description: "Drainage pipe burst causing sewage overflow near Hazratganj market for 2 days",
     location: "Hazratganj, Lucknow, UP",
     status: "Resolved",
-    date: "2024-01-10",
-    lastUpdate: "2024-01-13",
+    date: "2026-01-10",
+    lastUpdate: "2026-01-13",
     assignedTo: "Jal Nigam",
     timeline: [
       { step: "Submitted", done: true, date: "Jan 10" },
@@ -108,14 +108,14 @@ export const MOCK_GRIEVANCES = [
     ]
   },
   {
-    id: "GRV-2024-1240",
+    id: "GRV-2026-1240",
     title: "Public hospital medicine shortage",
     category: "Healthcare",
     description: "District hospital running out of basic medicines like paracetamol and antibiotics",
     location: "District Hospital, Lucknow, UP",
     status: "In Progress",
-    date: "2024-01-21",
-    lastUpdate: "2024-01-25",
+    date: "2026-01-21",
+    lastUpdate: "2026-01-25",
     assignedTo: "Health Department",
     timeline: [
       { step: "Submitted", done: true, date: "Jan 21" },
@@ -126,14 +126,14 @@ export const MOCK_GRIEVANCES = [
     ]
   },
   {
-    id: "GRV-2024-1241",
+    id: "GRV-2026-1241",
     title: "Tree fallen blocking road",
     category: "Roads & Infrastructure",
     description: "Large tree fell on Vikas Nagar road after storm, blocking entire lane since morning",
     location: "Vikas Nagar, Lucknow, UP",
     status: "Resolved",
-    date: "2024-01-19",
-    lastUpdate: "2024-01-19",
+    date: "2026-01-19",
+    lastUpdate: "2026-01-19",
     assignedTo: "Municipal Corporation",
     timeline: [
       { step: "Submitted", done: true, date: "Jan 19" },
@@ -144,14 +144,14 @@ export const MOCK_GRIEVANCES = [
     ]
   },
   {
-    id: "GRV-2024-1242",
+    id: "GRV-2026-1242",
     title: "Public toilet non-functional",
     category: "Sanitation",
     description: "Swachh Bharat public toilet at Railway Station has been locked and non-functional for 2 weeks",
     location: "Lucknow Railway Station, UP",
     status: "Pending",
-    date: "2024-01-24",
-    lastUpdate: "2024-01-24",
+    date: "2026-01-24",
+    lastUpdate: "2026-01-24",
     assignedTo: "Pending Assignment",
     timeline: [
       { step: "Submitted", done: true, date: "Jan 24" },
@@ -162,14 +162,14 @@ export const MOCK_GRIEVANCES = [
     ]
   },
   {
-    id: "GRV-2024-1243",
+    id: "GRV-2026-1243",
     title: "Illegal construction blocking public lane",
     category: "Other",
     description: "Neighbour has illegally extended boundary wall blocking the public footpath completely",
     location: "Indira Nagar, Lucknow, UP",
     status: "In Progress",
-    date: "2024-01-17",
-    lastUpdate: "2024-01-23",
+    date: "2026-01-17",
+    lastUpdate: "2026-01-23",
     assignedTo: "Town Planning Dept",
     timeline: [
       { step: "Submitted", done: true, date: "Jan 17" },

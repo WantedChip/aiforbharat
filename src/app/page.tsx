@@ -25,9 +25,6 @@ export default function LandingPage() {
 
         <div className="relative max-w-7xl mx-auto px-4 py-16 md:py-24">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-green-100 text-green-700 rounded-full text-sm font-medium mb-6">
-              <Bot className="w-4 h-4" /> AI for Bharat Hackathon — Team BEER BROS
-            </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4">
               Sarkar Ki Schemes,{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">
@@ -140,9 +137,9 @@ export default function LandingPage() {
                 <p className="text-xs font-medium text-gray-500 mb-2">📊 Status Tracking</p>
                 <div className="space-y-2">
                   {[
-                    { id: "GRV-2024-1234", title: "Water supply disruption", status: "Resolved" },
-                    { id: "GRV-2024-1235", title: "Road repair needed", status: "In Progress" },
-                    { id: "GRV-2024-1236", title: "Street light not working", status: "Pending" },
+                    { id: "GRV-2026-1234", title: "Water supply disruption", status: "Resolved" },
+                    { id: "GRV-2026-1235", title: "Road repair needed", status: "In Progress" },
+                    { id: "GRV-2026-1236", title: "Street light not working", status: "Pending" },
                   ].map((g) => (
                     <div
                       key={g.id}
@@ -263,11 +260,8 @@ export default function LandingPage() {
       </section>
 
       {/* AWS Powered Section */}
-      <section className="max-w-7xl mx-auto px-4 py-16">
+      <section className="max-w-7xl mx-auto px-4 py-10">
         <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-orange-50 text-orange-600 rounded-full text-sm font-medium mb-4">
-            ⚡ Powered by AWS
-          </div>
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
             Built on World-Class Infrastructure
           </h2>

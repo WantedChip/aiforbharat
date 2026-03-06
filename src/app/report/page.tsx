@@ -60,7 +60,7 @@ export default function ReportPage() {
     const handleProcessingComplete = useCallback(() => {
         setProcessing(false);
         setSubmitted(true);
-        setGrievanceId(`GRV-2024-${Math.floor(1000 + Math.random() * 9000)}`);
+        setGrievanceId(`GRV-2026-${Math.floor(1000 + Math.random() * 9000)}`);
     }, []);
 
     if (submitted) {
@@ -245,8 +245,8 @@ export default function ReportPage() {
                                         type="button"
                                         onClick={() => setPriority(p.label)}
                                         className={`flex items-center gap-2 px-4 py-2 rounded-xl border text-sm font-medium transition-all ${priority === p.label
-                                                ? `${p.color} ring-2 ring-offset-1`
-                                                : "bg-white border-gray-200 text-gray-600 hover:bg-gray-50"
+                                            ? `${p.color} ring-2 ring-offset-1`
+                                            : "bg-white border-gray-200 text-gray-600 hover:bg-gray-50"
                                             }`}
                                     >
                                         <span>{p.icon}</span> {p.label}
@@ -265,8 +265,8 @@ export default function ReportPage() {
                                         type="button"
                                         onClick={() => setContact(c)}
                                         className={`px-4 py-2 rounded-xl border text-sm font-medium transition-all ${contact === c
-                                                ? "bg-green-50 text-green-700 border-green-200 ring-2 ring-green-500/20"
-                                                : "bg-white border-gray-200 text-gray-600 hover:bg-gray-50"
+                                            ? "bg-green-50 text-green-700 border-green-200 ring-2 ring-green-500/20"
+                                            : "bg-white border-gray-200 text-gray-600 hover:bg-gray-50"
                                             }`}
                                     >
                                         {c}
