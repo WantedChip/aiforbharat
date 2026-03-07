@@ -15,7 +15,9 @@ export const LANGUAGES = [
     { code: "bn", label: "বাংলা", name: "Bengali" },
     { code: "mr", label: "मराठी", name: "Marathi" },
     { code: "te", label: "తెలుగు", name: "Telugu" },
-    { code: "ta", label: "தமிழ்", name: "Tamil" }
+    { code: "ta", label: "தமிழ்", name: "Tamil" },
+    { code: "gu", label: "ગુજરાતી", name: "Gujarati" },
+    { code: "kn", label: "ಕನ್ನಡ", name: "Kannada" }
 ];
 
 export const AWS_SERVICES = [

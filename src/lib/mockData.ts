@@ -178,6 +178,42 @@ export const MOCK_GRIEVANCES = [
       { step: "In Progress", done: true, date: "Jan 23" },
       { step: "Resolved", done: false, date: "" }
     ]
+  },
+  {
+    id: "GRV-2026-1244",
+    title: "Water logging in society",
+    category: "Water & Sanitation",
+    description: "Heavy water logging in society premises after mild rain",
+    location: "Navrangpura, Ahmedabad, Gujarat",
+    status: "Pending",
+    date: "2026-02-10",
+    lastUpdate: "2026-02-10",
+    assignedTo: "Pending Assignment",
+    timeline: [
+      { step: "Submitted", done: true, date: "Feb 10" },
+      { step: "Received", done: false, date: "" },
+      { step: "Assigned", done: false, date: "" },
+      { step: "In Progress", done: false, date: "" },
+      { step: "Resolved", done: false, date: "" }
+    ]
+  },
+  {
+    id: "GRV-2026-1245",
+    title: "Potholes on ring road",
+    category: "Roads & Infrastructure",
+    description: "Multiple dangerous potholes appearing on the outer ring road",
+    location: "Koramangala, Bengaluru, Karnataka",
+    status: "In Progress",
+    date: "2026-02-12",
+    lastUpdate: "2026-02-14",
+    assignedTo: "BBMP",
+    timeline: [
+      { step: "Submitted", done: true, date: "Feb 12" },
+      { step: "Received", done: true, date: "Feb 12" },
+      { step: "Assigned", done: true, date: "Feb 13" },
+      { step: "In Progress", done: true, date: "Feb 14" },
+      { step: "Resolved", done: false, date: "" }
+    ]
   }
 ];
 

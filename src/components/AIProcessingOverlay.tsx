@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { CheckCircle, Loader2, Upload, Brain, MapPin, Database, PartyPopper } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 interface AIProcessingOverlayProps {
     isOpen: boolean;
@@ -10,14 +11,15 @@ interface AIProcessingOverlayProps {
 }
 
 const steps = [
-    { icon: Upload, label: "Uploading to Amazon S3...", duration: 1000, emoji: "📤" },
-    { icon: Brain, label: "Analyzing with AWS Bedrock...", duration: 1500, emoji: "🤖" },
-    { icon: MapPin, label: "Mapping location...", duration: 1000, emoji: "📍" },
-    { icon: Database, label: "Saving to DynamoDB...", duration: 1000, emoji: "💾" },
-    { icon: CheckCircle, label: "Grievance Submitted!", duration: 500, emoji: "✅" },
+    { icon: Upload, labelKey: "overlay.uploading", duration: 1000, emoji: "📤" },
+    { icon: Brain, labelKey: "overlay.analyzing", duration: 1500, emoji: "🤖" },
+    { icon: MapPin, labelKey: "overlay.mapping", duration: 1000, emoji: "📍" },
+    { icon: Database, labelKey: "overlay.saving", duration: 1000, emoji: "💾" },
+    { icon: CheckCircle, labelKey: "overlay.success", duration: 500, emoji: "✅" },
 ];
 
 export default function AIProcessingOverlay({ isOpen, onComplete }: AIProcessingOverlayProps) {
+    const { t } = useTranslation();
     const [currentStep, setCurrentStep] = useState(0);
     const [completed, setCompleted] = useState<boolean[]>(new Array(steps.length).fill(false));
     const [showConfetti, setShowConfetti] = useState(false);
@@ -96,10 +98,10 @@ export default function AIProcessingOverlay({ isOpen, onComplete }: AIProcessing
                         )}
                     </div>
                     <h3 className="text-lg font-bold text-gray-900">
-                        {showConfetti ? "Success!" : "Processing Your Grievance"}
+                        {showConfetti ? t('overlay.success') : t('overlay.processing')}
                     </h3>
                     <p className="text-sm text-gray-500 mt-1">
-                        {showConfetti ? "Your grievance has been filed" : "AI is analyzing your submission..."}
+                        {showConfetti ? t('overlay.filed') : t('overlay.ai_analyzing')}
                     </p>
                 </div>
 
@@ -120,7 +122,7 @@ export default function AIProcessingOverlay({ isOpen, onComplete }: AIProcessing
 
                         return (
                             <div
-                                key={step.label}
+                                key={step.labelKey}
                                 className={cn(
                                     "flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300",
                                     isDone
@@ -154,7 +156,7 @@ export default function AIProcessingOverlay({ isOpen, onComplete }: AIProcessing
                                         isDone ? "text-green-700" : isActive ? "text-blue-700" : "text-gray-400"
                                     )}
                                 >
-                                    {step.emoji} {step.label}
+                                    {step.emoji} {t(step.labelKey)}
                                 </span>
                             </div>
                         );

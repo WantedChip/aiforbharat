@@ -19,8 +19,21 @@ import Footer from "@/components/Footer";
 import AIProcessingOverlay from "@/components/AIProcessingOverlay";
 import Link from "next/link";
 import ProtectedRoute from "@/components/ProtectedRoute";
+import { useTranslation } from "react-i18next";
+
+const categoryKeyMap: Record<string, string> = {
+    "Roads & Infrastructure": "roads",
+    "Water & Sanitation": "water",
+    "Electricity": "electricity",
+    "Education": "education",
+    "Healthcare": "healthcare",
+    "Garbage & Cleanliness": "garbage",
+    "Public Safety": "safety",
+    "Other": "other"
+};
 
 function ReportPageInner() {
+    const { t } = useTranslation();
     const [category, setCategory] = useState("");
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -73,16 +86,16 @@ function ReportPageInner() {
                         <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                             <CheckCircle className="w-10 h-10 text-green-600" />
                         </div>
-                        <h2 className="text-2xl font-bold text-gray-900 mb-2">Grievance Submitted!</h2>
-                        <p className="text-gray-500 mb-4">Your complaint has been registered successfully</p>
+                        <h2 className="text-2xl font-bold text-gray-900 mb-2">{t('report.success')}</h2>
+                        <p className="text-gray-500 mb-4">{t('report.success_sub')}</p>
                         <div className="bg-green-50 rounded-xl p-4 mb-6 border border-green-100">
-                            <p className="text-sm text-gray-500">Grievance ID</p>
+                            <p className="text-sm text-gray-500">{t('report.grievance_id')}</p>
                             <p className="text-2xl font-mono font-bold text-green-700">{grievanceId}</p>
                         </div>
                         <div className="space-y-3">
                             <Link href="/dashboard">
                                 <Button className="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white rounded-xl h-11">
-                                    Track Your Grievance <ArrowRight className="w-4 h-4 ml-2" />
+                                    {t('report.track')} <ArrowRight className="w-4 h-4 ml-2" />
                                 </Button>
                             </Link>
                             <Button
@@ -99,7 +112,7 @@ function ReportPageInner() {
                                     setPriority("Medium");
                                 }}
                             >
-                                Submit Another Grievance
+                                {t('report.submit_another')}
                             </Button>
                         </div>
                     </div>
@@ -116,9 +129,9 @@ function ReportPageInner() {
 
             <div className="max-w-6xl mx-auto py-8 px-4">
                 <div className="mb-8">
-                    <h1 className="text-2xl font-bold text-gray-900">Report a Grievance</h1>
+                    <h1 className="text-2xl font-bold text-gray-900">{t('report.title')}</h1>
                     <p className="text-gray-500 mt-1">
-                        Submit your complaint and we&apos;ll process it with AI
+                        {t('report.sub')}
                     </p>
                 </div>
 
@@ -127,47 +140,47 @@ function ReportPageInner() {
                     <form onSubmit={handleSubmit} className="lg:col-span-3 space-y-5">
                         {/* Category */}
                         <div>
-                            <Label className="text-sm font-medium text-gray-700">Category</Label>
+                            <Label className="text-sm font-medium text-gray-700">{t('report.category')}</Label>
                             <select
                                 value={category}
                                 onChange={(e) => setCategory(e.target.value)}
                                 className="mt-1.5 w-full h-11 px-3 rounded-xl border border-gray-200 bg-white text-sm focus:border-green-500 focus:ring-2 focus:ring-green-500/20 outline-none"
                             >
-                                <option value="">Select category...</option>
+                                <option value="">{t('report.select_cat')}</option>
                                 {CATEGORIES.map((cat) => (
-                                    <option key={cat} value={cat}>{cat}</option>
+                                    <option key={cat} value={cat}>{t(`categories.${categoryKeyMap[cat] || 'other'}`, cat)}</option>
                                 ))}
                             </select>
                         </div>
 
                         {/* Title */}
                         <div>
-                            <Label className="text-sm font-medium text-gray-700">Title</Label>
+                            <Label className="text-sm font-medium text-gray-700">{t('report.form_title')}</Label>
                             <Input
                                 value={title}
                                 onChange={(e) => setTitle(e.target.value)}
-                                placeholder="Brief description of the issue"
+                                placeholder={t('report.form_title_ph')}
                                 className="mt-1.5 rounded-xl h-11"
                             />
                         </div>
 
                         {/* Description */}
                         <div>
-                            <Label className="text-sm font-medium text-gray-700">Description</Label>
+                            <Label className="text-sm font-medium text-gray-700">{t('report.desc')}</Label>
                             <Textarea
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
-                                placeholder="Describe the issue in detail..."
+                                placeholder={t('report.desc_ph')}
                                 className="mt-1.5 rounded-xl min-h-[120px]"
                             />
                             <p className="text-xs text-gray-400 mt-1">
-                                {description.length}/200 characters (minimum recommended)
+                                {description.length}/200 {t('report.desc_len')}
                             </p>
                         </div>
 
                         {/* Location */}
                         <div>
-                            <Label className="text-sm font-medium text-gray-700">Location</Label>
+                            <Label className="text-sm font-medium text-gray-700">{t('report.loc')}</Label>
                             <div className="mt-1.5 flex gap-2">
                                 <Button
                                     type="button"
@@ -183,12 +196,12 @@ function ReportPageInner() {
                                     ) : (
                                         <MapPin className="w-4 h-4 mr-2" />
                                     )}
-                                    {gpsSet ? "GPS Set" : "Use My Location"}
+                                    {gpsSet ? t('report.gps_set') : t('report.use_location')}
                                 </Button>
                                 <Input
                                     value={location}
                                     onChange={(e) => setLocation(e.target.value)}
-                                    placeholder="Or enter location manually"
+                                    placeholder={t('report.loc_ph')}
                                     className="rounded-xl h-10"
                                 />
                             </div>
@@ -196,7 +209,7 @@ function ReportPageInner() {
 
                         {/* Photo Upload */}
                         <div>
-                            <Label className="text-sm font-medium text-gray-700">Photo Evidence</Label>
+                            <Label className="text-sm font-medium text-gray-700">{t('report.photo')}</Label>
                             <div className="mt-1.5">
                                 {photo ? (
                                     <div className="relative w-40 h-40 rounded-xl overflow-hidden border border-gray-200">
@@ -216,10 +229,9 @@ function ReportPageInner() {
                                                 <Camera className="w-5 h-5 text-gray-400" />
                                             </div>
                                             <p className="text-sm text-gray-500">
-                                                <span className="text-green-600 font-medium">Click to upload</span> or drag
-                                                & drop
+                                                <span className="text-green-600 font-medium">{t('report.click_upload')}</span> {t('report.drag_drop')}
                                             </p>
-                                            <p className="text-xs text-gray-400 mt-1">PNG, JPG up to 10MB</p>
+                                            <p className="text-xs text-gray-400 mt-1">{t('report.photo_hint')}</p>
                                         </div>
                                         <input
                                             type="file"
@@ -234,7 +246,7 @@ function ReportPageInner() {
 
                         {/* Priority */}
                         <div>
-                            <Label className="text-sm font-medium text-gray-700">Priority</Label>
+                            <Label className="text-sm font-medium text-gray-700">{t('report.priority')}</Label>
                             <div className="mt-1.5 flex gap-3">
                                 {[
                                     { label: "Low", color: "bg-green-100 text-green-700 border-green-200", icon: "🟢" },
@@ -250,7 +262,7 @@ function ReportPageInner() {
                                             : "bg-white border-gray-200 text-gray-600 hover:bg-gray-50"
                                             }`}
                                     >
-                                        <span>{p.icon}</span> {p.label}
+                                        <span>{p.icon}</span> {t(`report.${p.label.toLowerCase()}`, p.label)}
                                     </button>
                                 ))}
                             </div>
@@ -258,7 +270,7 @@ function ReportPageInner() {
 
                         {/* Contact Preference */}
                         <div>
-                            <Label className="text-sm font-medium text-gray-700">Contact Preference</Label>
+                            <Label className="text-sm font-medium text-gray-700">{t('report.contact')}</Label>
                             <div className="mt-1.5 flex gap-3">
                                 {["WhatsApp", "SMS", "Email"].map((c) => (
                                     <button
@@ -282,42 +294,42 @@ function ReportPageInner() {
                             disabled={!category || !title || !description}
                             className="w-full h-12 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white rounded-xl text-base shadow-lg shadow-green-500/20"
                         >
-                            <Upload className="w-4 h-4 mr-2" /> Submit Grievance
+                            <Upload className="w-4 h-4 mr-2" /> {t('report.submit')}
                         </Button>
                     </form>
 
                     {/* Live Preview - Right 40% */}
                     <div className="lg:col-span-2">
                         <div className="sticky top-24 bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-                            <h3 className="text-sm font-semibold text-gray-900 mb-4">📋 Live Preview</h3>
+                            <h3 className="text-sm font-semibold text-gray-900 mb-4">{t('report.live_preview')}</h3>
                             <div className="space-y-3">
                                 <div className="p-3 bg-gray-50 rounded-xl">
-                                    <p className="text-xs text-gray-400 mb-0.5">Category</p>
+                                    <p className="text-xs text-gray-400 mb-0.5">{t('report.category')}</p>
                                     <p className="text-sm font-medium text-gray-700">
-                                        {category || "Not selected"}
+                                        {category ? t(`categories.${categoryKeyMap[category] || 'other'}`, category) : t('report.not_sel')}
                                     </p>
                                 </div>
                                 <div className="p-3 bg-gray-50 rounded-xl">
-                                    <p className="text-xs text-gray-400 mb-0.5">Title</p>
+                                    <p className="text-xs text-gray-400 mb-0.5">{t('report.form_title')}</p>
                                     <p className="text-sm font-medium text-gray-700">
-                                        {title || "No title yet"}
+                                        {title || t('report.no_title')}
                                     </p>
                                 </div>
                                 <div className="p-3 bg-gray-50 rounded-xl">
-                                    <p className="text-xs text-gray-400 mb-0.5">Description</p>
+                                    <p className="text-xs text-gray-400 mb-0.5">{t('report.desc')}</p>
                                     <p className="text-sm text-gray-600 line-clamp-3">
-                                        {description || "No description yet"}
+                                        {description || t('report.no_desc')}
                                     </p>
                                 </div>
                                 <div className="p-3 bg-gray-50 rounded-xl">
-                                    <p className="text-xs text-gray-400 mb-0.5">Location</p>
+                                    <p className="text-xs text-gray-400 mb-0.5">{t('report.loc')}</p>
                                     <p className="text-sm font-medium text-gray-700">
-                                        {location ? `📍 ${location}` : "Not set"}
+                                        {location ? `📍 ${location}` : t('report.not_set')}
                                     </p>
                                 </div>
                                 {photo && (
                                     <div className="p-3 bg-gray-50 rounded-xl">
-                                        <p className="text-xs text-gray-400 mb-1">Photo</p>
+                                        <p className="text-xs text-gray-400 mb-1">{t('report.photo')}</p>
                                         <img
                                             src={photo}
                                             alt="Preview"
@@ -327,11 +339,11 @@ function ReportPageInner() {
                                 )}
                                 <div className="flex gap-2">
                                     <div className="flex-1 p-3 bg-gray-50 rounded-xl">
-                                        <p className="text-xs text-gray-400 mb-0.5">Priority</p>
-                                        <p className="text-sm font-medium">{priority}</p>
+                                        <p className="text-xs text-gray-400 mb-0.5">{t('report.priority')}</p>
+                                        <p className="text-sm font-medium">{t(`report.${priority.toLowerCase()}`, priority)}</p>
                                     </div>
                                     <div className="flex-1 p-3 bg-gray-50 rounded-xl">
-                                        <p className="text-xs text-gray-400 mb-0.5">Contact</p>
+                                        <p className="text-xs text-gray-400 mb-0.5">{t('report.contact')}</p>
                                         <p className="text-sm font-medium">{contact}</p>
                                     </div>
                                 </div>

@@ -9,6 +9,8 @@ import { LANGUAGES } from "@/lib/constants";
 import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { logoutUser } from "@/lib/auth";
+import { useTranslation } from "react-i18next";
+import "@/lib/i18n";
 
 const navLinks = [
     { href: "/", label: "Home" },
@@ -22,7 +24,8 @@ export default function Navbar() {
     const router = useRouter();
     const [langOpen, setLangOpen] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [selectedLang, setSelectedLang] = useState("English");
+    const { t, i18n } = useTranslation();
+    const activeLanguageStr = LANGUAGES.find(l => l.code === i18n.language)?.name || "English";
     const [userMenuOpen, setUserMenuOpen] = useState(false);
     const { loggedIn, phone, loading } = useAuth();
 
@@ -58,7 +61,7 @@ export default function Navbar() {
                                     : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                                     }`}
                             >
-                                {link.label}
+                                {t(`navbar.${link.label.toLowerCase()}`)}
                             </Link>
                         ))}
                     </div>
@@ -72,7 +75,7 @@ export default function Navbar() {
                                 className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-gray-200 text-sm text-gray-600 hover:bg-gray-50 transition-colors"
                             >
                                 <Globe className="w-4 h-4" />
-                                <span>{selectedLang}</span>
+                                <span>{activeLanguageStr}</span>
                             </button>
                             {langOpen && (
                                 <div className="absolute right-0 top-full mt-1 bg-white rounded-xl shadow-xl border border-gray-100 py-1 min-w-[140px] z-50 animate-fade-in">
@@ -80,7 +83,7 @@ export default function Navbar() {
                                         <button
                                             key={lang.code}
                                             onClick={() => {
-                                                setSelectedLang(lang.name);
+                                                i18n.changeLanguage(lang.code);
                                                 setLangOpen(false);
                                             }}
                                             className="w-full text-left px-4 py-2 text-sm hover:bg-green-50 hover:text-green-700 transition-colors"
@@ -114,7 +117,7 @@ export default function Navbar() {
                                                 onClick={() => setUserMenuOpen(false)}
                                                 className="block w-full text-left px-4 py-2 text-sm hover:bg-green-50 hover:text-green-700 transition-colors"
                                             >
-                                                Dashboard
+                                                {t('navbar.dashboard')}
                                             </Link>
                                             <button
                                                 onClick={handleLogout}
@@ -132,7 +135,7 @@ export default function Navbar() {
                                         size="sm"
                                         className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white shadow-md shadow-green-500/20 hover:shadow-green-500/40 transition-all"
                                     >
-                                        Login
+                                        {t('navbar.login')}
                                     </Button>
                                 </Link>
                             )
@@ -164,7 +167,7 @@ export default function Navbar() {
                                     : "text-gray-600 hover:bg-gray-50"
                                     }`}
                             >
-                                {link.label}
+                                {t(`navbar.${link.label.toLowerCase()}`)}
                             </Link>
                         ))}
                     </div>

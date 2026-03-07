@@ -10,8 +10,10 @@ import Footer from "@/components/Footer";
 import SchemeCard from "@/components/SchemeCard";
 import VoiceDemo from "@/components/VoiceDemo";
 import ProtectedRoute from "@/components/ProtectedRoute";
+import { useTranslation } from "react-i18next";
 
 function SchemesPageInner() {
+    const { t } = useTranslation();
     const [step, setStep] = useState(0);
     const [occupation, setOccupation] = useState("");
     const [age, setAge] = useState("");
@@ -67,10 +69,10 @@ function SchemesPageInner() {
             <div className="bg-gradient-to-r from-green-600 to-emerald-700 py-12 px-4">
                 <div className="max-w-4xl mx-auto text-center">
                     <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">
-                        Find Government Schemes You&apos;re Eligible For
+                        {t('schemes.hero_title')}
                     </h1>
                     <p className="text-green-100 text-lg">
-                        AI-powered matching across 100+ central & state schemes
+                        {t('schemes.hero_sub')}
                     </p>
                 </div>
             </div>
@@ -79,10 +81,10 @@ function SchemesPageInner() {
                 {/* Interactive Eligibility Checker */}
                 <div className="bg-white rounded-2xl border border-gray-100 shadow-lg p-8 mb-12 -mt-8 relative z-10">
                     <h2 className="text-xl font-bold text-gray-900 mb-1 text-center">
-                        🎯 Interactive Eligibility Checker
+                        {t('schemes.checker_title')}
                     </h2>
                     <p className="text-sm text-gray-500 text-center mb-6">
-                        Answer a few questions to find schemes tailored for you
+                        {t('schemes.checker_sub')}
                     </p>
 
                     {/* Checking Animation */}
@@ -91,8 +93,8 @@ function SchemesPageInner() {
                             <div className="w-16 h-16 mx-auto bg-purple-50 rounded-full flex items-center justify-center">
                                 <Brain className="w-8 h-8 text-purple-600 animate-pulse" />
                             </div>
-                            <p className="text-purple-600 font-medium">Analyzing with AWS Bedrock...</p>
-                            <p className="text-xs text-gray-400">Matching your profile with 100+ schemes</p>
+                            <p className="text-purple-600 font-medium">{t('schemes.analyzing')}</p>
+                            <p className="text-xs text-gray-400">{t('schemes.matching')}</p>
                             <div className="w-48 h-1.5 bg-gray-100 rounded-full mx-auto overflow-hidden">
                                 <div className="h-full bg-gradient-to-r from-purple-500 to-blue-500 rounded-full animate-[progress-fill_2s_ease-out_forwards]" />
                             </div>
@@ -107,9 +109,9 @@ function SchemesPageInner() {
                                     <span className="text-2xl">🎉</span>
                                 </div>
                                 <p className="text-lg font-bold text-gray-900">
-                                    {eligibleSchemes.length} Schemes Found!
+                                    {eligibleSchemes.length} {t('schemes.found')}
                                 </p>
-                                <p className="text-sm text-gray-500">Based on your profile</p>
+                                <p className="text-sm text-gray-500">{t('schemes.based_on')}</p>
                             </div>
                             <div className="grid md:grid-cols-2 gap-4">
                                 {eligibleSchemes.map((s) => (
@@ -122,7 +124,7 @@ function SchemesPageInner() {
                             </div>
                             <div className="text-center pt-4">
                                 <Button variant="outline" onClick={resetChecker} className="rounded-xl">
-                                    Check Again
+                                    {t('schemes.check_again')}
                                 </Button>
                             </div>
                         </div>
@@ -148,7 +150,7 @@ function SchemesPageInner() {
                             {step === 0 && (
                                 <div className="animate-fade-in">
                                     <p className="text-sm font-medium text-gray-700 mb-3">
-                                        Step 1: What is your occupation?
+                                        {t('schemes.step1')}
                                     </p>
                                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                                         {occupations.map((o) => (
@@ -174,12 +176,12 @@ function SchemesPageInner() {
                             {step === 1 && (
                                 <div className="animate-fade-in">
                                     <p className="text-sm font-medium text-gray-700 mb-3">
-                                        Step 2: What is your age?
+                                        {t('schemes.step2')}
                                     </p>
                                     <div className="flex gap-3 max-w-xs">
                                         <Input
                                             type="number"
-                                            placeholder="Enter age"
+                                            placeholder={t('schemes.enter_age')}
                                             value={age}
                                             onChange={(e) => setAge(e.target.value)}
                                             className="rounded-xl h-11"
@@ -189,7 +191,7 @@ function SchemesPageInner() {
                                             disabled={!age}
                                             className="rounded-xl bg-green-500 hover:bg-green-600"
                                         >
-                                            Next →
+                                            {t('schemes.next')}
                                         </Button>
                                     </div>
                                 </div>
@@ -199,7 +201,7 @@ function SchemesPageInner() {
                             {step === 2 && (
                                 <div className="animate-fade-in">
                                     <p className="text-sm font-medium text-gray-700 mb-3">
-                                        Step 3: What is your annual income?
+                                        {t('schemes.step3')}
                                     </p>
                                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                                         {incomeRanges.map((range) => (
@@ -226,15 +228,15 @@ function SchemesPageInner() {
                                 <div className="animate-fade-in text-center">
                                     <div className="bg-gray-50 rounded-xl p-4 mb-4 max-w-sm mx-auto text-left space-y-2">
                                         <p className="text-sm">
-                                            <span className="text-gray-400">Occupation:</span>{" "}
+                                            <span className="text-gray-400">{t('schemes.occ')}</span>{" "}
                                             <span className="font-medium text-gray-700">{occupation}</span>
                                         </p>
                                         <p className="text-sm">
-                                            <span className="text-gray-400">Age:</span>{" "}
-                                            <span className="font-medium text-gray-700">{age} years</span>
+                                            <span className="text-gray-400">{t('schemes.age')}</span>{" "}
+                                            <span className="font-medium text-gray-700">{age} {t('schemes.years')}</span>
                                         </p>
                                         <p className="text-sm">
-                                            <span className="text-gray-400">Income:</span>{" "}
+                                            <span className="text-gray-400">{t('schemes.inc')}</span>{" "}
                                             <span className="font-medium text-gray-700">{income}</span>
                                         </p>
                                     </div>
@@ -242,7 +244,7 @@ function SchemesPageInner() {
                                         onClick={handleCheck}
                                         className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white rounded-xl h-11 px-8"
                                     >
-                                        <Search className="w-4 h-4 mr-2" /> Check Eligibility
+                                        <Search className="w-4 h-4 mr-2" /> {t('schemes.check_eligibility')}
                                     </Button>
                                 </div>
                             )}
@@ -252,7 +254,7 @@ function SchemesPageInner() {
 
                 {/* All Schemes Grid */}
                 <div className="mb-12">
-                    <h2 className="text-xl font-bold text-gray-900 mb-6">All Government Schemes</h2>
+                    <h2 className="text-xl font-bold text-gray-900 mb-6">{t('schemes.all_schemes')}</h2>
                     <div className="grid md:grid-cols-2 gap-4">
                         {MOCK_SCHEMES.map((scheme) => (
                             <SchemeCard
@@ -267,10 +269,10 @@ function SchemesPageInner() {
                 {/* Voice Demo Section */}
                 <div className="text-center mb-12">
                     <h2 className="text-xl font-bold text-gray-900 mb-2">
-                        🎤 Try with Voice on WhatsApp
+                        {t('schemes.voice_title')}
                     </h2>
                     <p className="text-gray-500 mb-6">
-                        Speak in your language — our AI understands Hindi, Tamil, Telugu & more
+                        {t('schemes.voice_sub')}
                     </p>
                     <VoiceDemo />
                 </div>

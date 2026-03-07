@@ -4,10 +4,12 @@ import { useState, useEffect } from "react";
 import { Mic, Loader2, Brain, CheckCircle, RotateCcw } from "lucide-react";
 import { MOCK_SCHEMES } from "@/lib/mockData";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 type DemoState = "idle" | "recording" | "transcribing" | "analyzing" | "result";
 
 export default function VoiceDemo() {
+    const { t } = useTranslation();
     const [state, setState] = useState<DemoState>("idle");
     const [timer, setTimer] = useState(0);
 
@@ -53,8 +55,8 @@ export default function VoiceDemo() {
                         >
                             <Mic className="w-10 h-10 text-white group-hover:scale-110 transition-transform" />
                         </button>
-                        <p className="text-gray-600 font-medium">Tap to speak in your language</p>
-                        <p className="text-xs text-gray-400">Powered by AWS Transcribe</p>
+                        <p className="text-gray-600 font-medium">{t('voice.tap_speak')}</p>
+                        <p className="text-xs text-gray-400">{t('voice.powered_by')}</p>
                     </div>
                 )}
 
@@ -81,7 +83,7 @@ export default function VoiceDemo() {
                             ))}
                         </div>
                         <p className="text-red-600 font-medium">
-                            Recording... 0:{timer.toString().padStart(2, "0")}
+                            {t('voice.recording')} 0:{timer.toString().padStart(2, "0")}
                         </p>
                     </div>
                 )}
@@ -92,8 +94,8 @@ export default function VoiceDemo() {
                         <div className="w-24 h-24 mx-auto bg-blue-50 rounded-full flex items-center justify-center">
                             <Loader2 className="w-10 h-10 text-blue-600 animate-spin" />
                         </div>
-                        <p className="text-blue-600 font-medium">Transcribing with AWS Transcribe...</p>
-                        <p className="text-xs text-gray-400">Converting speech to text in Hindi</p>
+                        <p className="text-blue-600 font-medium">{t('voice.transcribing')}</p>
+                        <p className="text-xs text-gray-400">{t('voice.converting')}</p>
                     </div>
                 )}
 
@@ -103,8 +105,8 @@ export default function VoiceDemo() {
                         <div className="w-24 h-24 mx-auto bg-purple-50 rounded-full flex items-center justify-center">
                             <Brain className="w-10 h-10 text-purple-600 animate-pulse" />
                         </div>
-                        <p className="text-purple-600 font-medium">Matching schemes with AWS Bedrock...</p>
-                        <p className="text-xs text-gray-400">Analyzing eligibility criteria</p>
+                        <p className="text-purple-600 font-medium">{t('voice.analyzing')}</p>
+                        <p className="text-xs text-gray-400">{t('voice.criteria')}</p>
                     </div>
                 )}
 
@@ -114,7 +116,7 @@ export default function VoiceDemo() {
                         <div className="w-16 h-16 mx-auto bg-green-100 rounded-full flex items-center justify-center animate-slide-up">
                             <CheckCircle className="w-8 h-8 text-green-600" />
                         </div>
-                        <p className="text-green-700 font-bold text-lg">{eligibleSchemes.length} Schemes Found!</p>
+                        <p className="text-green-700 font-bold text-lg">{eligibleSchemes.length} {t('schemes.found')}</p>
 
                         <div className="space-y-2 text-left">
                             {eligibleSchemes.map((scheme, i) => (
@@ -139,7 +141,7 @@ export default function VoiceDemo() {
                                 "bg-gray-100 hover:bg-gray-200 text-gray-600 text-sm font-medium transition-colors"
                             )}
                         >
-                            <RotateCcw className="w-4 h-4" /> Try Again
+                            <RotateCcw className="w-4 h-4" /> {t('voice.try_again')}
                         </button>
                     </div>
                 )}

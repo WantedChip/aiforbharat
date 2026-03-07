@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 type StatusType = "Resolved" | "Pending" | "In Progress" | string;
 
@@ -8,6 +9,7 @@ interface StatusBadgeProps {
 }
 
 export default function StatusBadge({ status, className }: StatusBadgeProps) {
+    const { t } = useTranslation();
     const getStatusStyles = (s: StatusType) => {
         switch (s) {
             case "Resolved":
@@ -43,7 +45,7 @@ export default function StatusBadge({ status, className }: StatusBadgeProps) {
             )}
         >
             <span className="text-[10px]">{getIcon(status)}</span>
-            {status}
+            {status === "Resolved" ? t('dashboard.resolved', status) : status === "In Progress" ? t('dashboard.in_progress', status) : status === "Pending" ? t('dashboard.pending', status) : status}
         </span>
     );
 }

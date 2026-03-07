@@ -1,5 +1,6 @@
 import { CheckCircle, FileText, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 
 interface SchemeCardProps {
     name: string;
@@ -24,6 +25,7 @@ export default function SchemeCard({
     description,
     onApply,
 }: SchemeCardProps) {
+    const { t } = useTranslation();
     return (
         <div className="bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
             {/* Header */}
@@ -36,11 +38,11 @@ export default function SchemeCard({
                             </span>
                             {eligible ? (
                                 <span className="inline-flex items-center gap-1 text-xs font-medium text-green-600 bg-green-50 px-2 py-0.5 rounded-md">
-                                    <CheckCircle className="w-3 h-3" /> Eligible ✓
+                                    <CheckCircle className="w-3 h-3" /> {t('components.eligible')}
                                 </span>
                             ) : (
                                 <span className="text-xs font-medium text-gray-400 bg-gray-50 px-2 py-0.5 rounded-md">
-                                    Check Eligibility
+                                    {t('components.check_eligibility')}
                                 </span>
                             )}
                         </div>
@@ -58,7 +60,7 @@ export default function SchemeCard({
             <div className="px-5 py-3 bg-gray-50/50 border-t border-gray-100">
                 <div className="grid grid-cols-2 gap-4">
                     <div>
-                        <p className="text-xs font-medium text-gray-500 mb-1.5">Eligibility</p>
+                        <p className="text-xs font-medium text-gray-500 mb-1.5">{t('components.eligibility')}</p>
                         <ul className="space-y-1">
                             {eligibility.map((item) => (
                                 <li
@@ -72,7 +74,7 @@ export default function SchemeCard({
                     </div>
                     <div>
                         <p className="text-xs font-medium text-gray-500 mb-1.5 flex items-center gap-1">
-                            <FileText className="w-3 h-3" /> Documents
+                            <FileText className="w-3 h-3" /> {t('components.documents')}
                         </p>
                         <ul className="space-y-1">
                             {documents.map((doc) => (
@@ -102,10 +104,10 @@ export default function SchemeCard({
                 >
                     {eligible ? (
                         <>
-                            Apply Now <ExternalLink className="w-3.5 h-3.5 ml-1.5" />
+                            {t('components.apply_now')} <ExternalLink className="w-3.5 h-3.5 ml-1.5" />
                         </>
                     ) : (
-                        "Check Eligibility →"
+                        <>{t('components.check_eligibility')} &rarr;</>
                     )}
                 </Button>
             </div>

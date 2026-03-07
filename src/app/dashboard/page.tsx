@@ -10,10 +10,12 @@ import ComplaintCard from "@/components/ComplaintCard";
 import SchemeCard from "@/components/SchemeCard";
 import Link from "next/link";
 import ProtectedRoute from "@/components/ProtectedRoute";
+import { useTranslation } from "react-i18next";
 
 type FilterType = "All" | "Pending" | "In Progress" | "Resolved";
 
 function DashboardPageInner() {
+    const { t } = useTranslation();
     const [activeTab, setActiveTab] = useState<"grievances" | "schemes">("grievances");
     const [filter, setFilter] = useState<FilterType>("All");
     const [toastMessage, setToastMessage] = useState("");
@@ -33,6 +35,14 @@ function DashboardPageInner() {
     const showToast = (msg: string) => {
         setToastMessage(msg);
         setTimeout(() => setToastMessage(""), 3000);
+    };
+
+    const translateFilter = (f: FilterType) => {
+        if (f === "All") return t('dashboard.total', "All");
+        if (f === "Pending") return t('dashboard.pending', "Pending");
+        if (f === "In Progress") return t('dashboard.in_progress', "In Progress");
+        if (f === "Resolved") return t('dashboard.resolved', "Resolved");
+        return f;
     };
 
     return (
@@ -59,7 +69,7 @@ function DashboardPageInner() {
                                 <h2 className="text-lg font-bold text-gray-900">Ramesh Kumar</h2>
                                 <p className="text-sm text-gray-500">+91 98XXX XXXXX</p>
                                 <div className="flex items-center justify-center gap-1 text-xs text-gray-400 mt-1">
-                                    <MapPin className="w-3 h-3" /> Lucknow, UP
+                                    <MapPin className="w-3 h-3" /> {t('dashboard.user_location', "Lucknow, UP")}
                                 </div>
                             </div>
 
@@ -67,19 +77,19 @@ function DashboardPageInner() {
                             <div className="grid grid-cols-2 gap-2 mb-6">
                                 <div className="bg-gray-50 rounded-xl p-3 text-center">
                                     <p className="text-lg font-bold text-gray-900">{stats.total}</p>
-                                    <p className="text-xs text-gray-500">Total</p>
+                                    <p className="text-xs text-gray-500">{t('dashboard.total')}</p>
                                 </div>
                                 <div className="bg-green-50 rounded-xl p-3 text-center">
                                     <p className="text-lg font-bold text-green-600">{stats.resolved}</p>
-                                    <p className="text-xs text-gray-500">Resolved</p>
+                                    <p className="text-xs text-gray-500">{t('dashboard.resolved')}</p>
                                 </div>
                                 <div className="bg-yellow-50 rounded-xl p-3 text-center">
                                     <p className="text-lg font-bold text-yellow-600">{stats.pending}</p>
-                                    <p className="text-xs text-gray-500">Pending</p>
+                                    <p className="text-xs text-gray-500">{t('dashboard.pending')}</p>
                                 </div>
                                 <div className="bg-blue-50 rounded-xl p-3 text-center">
                                     <p className="text-lg font-bold text-blue-600">{stats.inProgress}</p>
-                                    <p className="text-xs text-gray-500">In Progress</p>
+                                    <p className="text-xs text-gray-500">{t('dashboard.in_progress')}</p>
                                 </div>
                             </div>
 
@@ -87,12 +97,12 @@ function DashboardPageInner() {
                             <div className="space-y-2">
                                 <Link href="/report" className="block">
                                     <Button className="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white rounded-xl h-10">
-                                        <PlusCircle className="w-4 h-4 mr-2" /> New Grievance
+                                        <PlusCircle className="w-4 h-4 mr-2" /> {t('dashboard.new_grievance')}
                                     </Button>
                                 </Link>
                                 <Link href="/schemes" className="block">
                                     <Button variant="outline" className="w-full rounded-xl h-10">
-                                        <Search className="w-4 h-4 mr-2" /> Find Schemes
+                                        <Search className="w-4 h-4 mr-2" /> {t('dashboard.find_schemes')}
                                     </Button>
                                 </Link>
                             </div>
@@ -111,7 +121,7 @@ function DashboardPageInner() {
                                     }`}
                             >
                                 <FileText className="w-4 h-4 inline mr-1.5" />
-                                My Grievances
+                                {t('dashboard.my_grievances')}
                             </button>
                             <button
                                 onClick={() => setActiveTab("schemes")}
@@ -121,7 +131,7 @@ function DashboardPageInner() {
                                     }`}
                             >
                                 <Search className="w-4 h-4 inline mr-1.5" />
-                                Scheme Eligibility
+                                {t('dashboard.scheme_eligibility')}
                             </button>
                         </div>
 
@@ -139,7 +149,7 @@ function DashboardPageInner() {
                                                 : "bg-white text-gray-600 border border-gray-200 hover:bg-gray-50"
                                                 }`}
                                         >
-                                            {f}
+                                            {translateFilter(f)}
                                             {f !== "All" && (
                                                 <span className="ml-1.5 text-xs opacity-70">
                                                     ({MOCK_GRIEVANCES.filter((g) => g.status === f).length})
