@@ -116,7 +116,7 @@ function SchemesPageInner() {
                             <div className="grid md:grid-cols-2 gap-4">
                                 {eligibleSchemes.map((s) => (
                                     <SchemeCard
-                                        key={s.id}
+                                        key={s.scheme_id}
                                         {...s}
                                         onApply={() => showToast("Redirecting to official portal...")}
                                     />
@@ -258,7 +258,7 @@ function SchemesPageInner() {
                     <div className="grid md:grid-cols-2 gap-4">
                         {MOCK_SCHEMES.map((scheme) => (
                             <SchemeCard
-                                key={scheme.id}
+                                key={scheme.scheme_id}
                                 {...scheme}
                                 onApply={() => showToast("Redirecting to official portal...")}
                             />

@@ -18,8 +18,8 @@ export default function SchemeGrievanceCarousel() {
             const initials = nameParts.length > 1 ? `${nameParts[0][0]}${nameParts[1][0]}` : nameParts[0][0];
 
             return {
-                text: scheme.description,
-                highlight: scheme.benefit,
+                text: scheme.objective,
+                highlight: scheme.benefit_amount,
                 initials: initials,
                 name: names[i],
                 role: "Enrolled via Neta-ji"

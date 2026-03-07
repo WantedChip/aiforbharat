@@ -173,7 +173,7 @@ function DashboardPageInner() {
                             <div className="grid md:grid-cols-2 gap-4">
                                 {MOCK_SCHEMES.map((scheme) => (
                                     <SchemeCard
-                                        key={scheme.id}
+                                        key={scheme.scheme_id}
                                         {...scheme}
                                         onApply={() =>
                                             showToast("Redirecting to official portal...")

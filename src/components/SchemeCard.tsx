@@ -3,26 +3,33 @@ import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
 
 interface SchemeCardProps {
-    name: string;
-    fullName: string;
-    benefit: string;
+    scheme_id: string;
+    scheme_name: string;
+    full_name: string;
+    benefit_amount: string;
     category: string;
-    eligibility: string[];
-    documents: string[];
+    eligibility: {
+        age_requirement: string;
+        income_requirement: string;
+        occupation_requirement: string;
+        gender_requirement: string;
+        other_conditions: string;
+    };
+    documents_required: string[];
     eligible: boolean;
-    description: string;
+    objective: string;
     onApply?: () => void;
 }
 
 export default function SchemeCard({
-    name,
-    fullName,
-    benefit,
+    scheme_name,
+    full_name,
+    benefit_amount,
     category,
     eligibility,
-    documents,
+    documents_required,
     eligible,
-    description,
+    objective,
     onApply,
 }: SchemeCardProps) {
     const { t } = useTranslation();
@@ -46,14 +53,14 @@ export default function SchemeCard({
                                 </span>
                             )}
                         </div>
-                        <h3 className="text-lg font-bold text-gray-900">{name}</h3>
-                        <p className="text-sm text-gray-500">{fullName}</p>
+                        <h3 className="text-lg font-bold text-gray-900">{scheme_name}</h3>
+                        <p className="text-sm text-gray-500">{full_name}</p>
                     </div>
                     <div className="text-right">
-                        <p className="text-lg font-bold text-green-600">{benefit}</p>
+                        <p className="text-lg font-bold text-green-600">{benefit_amount}</p>
                     </div>
                 </div>
-                <p className="text-sm text-gray-600 mt-2">{description}</p>
+                <p className="text-sm text-gray-600 mt-2">{objective}</p>
             </div>
 
             {/* Details */}
@@ -62,9 +69,15 @@ export default function SchemeCard({
                     <div>
                         <p className="text-xs font-medium text-gray-500 mb-1.5">{t('components.eligibility')}</p>
                         <ul className="space-y-1">
-                            {eligibility.map((item) => (
+                            {[
+                                eligibility.age_requirement && `Age: ${eligibility.age_requirement}`,
+                                eligibility.income_requirement && `Income: ${eligibility.income_requirement}`,
+                                eligibility.occupation_requirement && `Occupation: ${eligibility.occupation_requirement}`,
+                                eligibility.gender_requirement && eligibility.gender_requirement !== "All" && `Gender: ${eligibility.gender_requirement}`,
+                                eligibility.other_conditions
+                            ].filter(Boolean).map((item, idx) => (
                                 <li
-                                    key={item}
+                                    key={idx}
                                     className="text-xs text-gray-600 flex items-start gap-1.5"
                                 >
                                     <span className="text-green-500 mt-0.5">•</span> {item}
@@ -77,9 +90,9 @@ export default function SchemeCard({
                             <FileText className="w-3 h-3" /> {t('components.documents')}
                         </p>
                         <ul className="space-y-1">
-                            {documents.map((doc) => (
+                            {documents_required.map((doc, idx) => (
                                 <li
-                                    key={doc}
+                                    key={idx}
                                     className="text-xs text-gray-600 flex items-start gap-1.5"
                                 >
                                     <span className="text-blue-500 mt-0.5">•</span> {doc}

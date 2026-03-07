@@ -121,15 +121,15 @@ export default function VoiceDemo() {
                         <div className="space-y-2 text-left">
                             {eligibleSchemes.map((scheme, i) => (
                                 <div
-                                    key={scheme.id}
+                                    key={scheme.scheme_id}
                                     className="flex items-center justify-between p-3 bg-green-50 rounded-xl border border-green-100 animate-slide-up"
                                     style={{ animationDelay: `${i * 0.15}s` }}
                                 >
                                     <div>
-                                        <p className="text-sm font-bold text-gray-900">{scheme.name}</p>
-                                        <p className="text-xs text-gray-500">{scheme.fullName}</p>
+                                        <p className="text-sm font-bold text-gray-900">{scheme.scheme_name}</p>
+                                        <p className="text-xs text-gray-500">{scheme.full_name}</p>
                                     </div>
-                                    <span className="text-sm font-bold text-green-600">{scheme.benefit}</span>
+                                    <span className="text-sm font-bold text-green-600">{scheme.benefit_amount}</span>
                                 </div>
                             ))}
                         </div>
