@@ -6,7 +6,9 @@ import { motion } from "motion/react";
 export interface Testimonial {
     text: string;
     highlight?: string;
-    image: string;
+    image?: string;
+    initials?: string;
+    icon?: React.ReactNode;
     name: string;
     role: string;
 }
@@ -53,7 +55,7 @@ export const TestimonialsCarousel: React.FC<TestimonialsCarouselProps> = ({
                 }}
                 className="flex gap-6"
             >
-                {loopTestimonials.map(({ text, highlight, image, name, role }, index) => (
+                {loopTestimonials.map(({ text, highlight, image, initials, icon, name, role }, index) => (
                     <motion.div
                         key={index}
                         whileHover={{ scale: 1.05, rotate: 1 }}
@@ -76,13 +78,29 @@ export const TestimonialsCarousel: React.FC<TestimonialsCarouselProps> = ({
                         </p>
 
                         <div className="flex items-center gap-3 mt-4">
-                            <img
-                                src={image}
-                                alt={name}
-                                width={50}
-                                height={50}
-                                className="h-12 w-12 rounded-full object-cover"
-                            />
+                            {image ? (
+                                <img
+                                    src={image}
+                                    alt={name}
+                                    width={50}
+                                    height={50}
+                                    className="h-12 w-12 rounded-full object-cover"
+                                />
+                            ) : initials ? (
+                                <div className="h-12 w-12 rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 flex items-center justify-center font-bold text-lg flex-shrink-0">
+                                    {initials}
+                                </div>
+                            ) : icon ? (
+                                <div className="h-12 w-12 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 flex items-center justify-center flex-shrink-0">
+                                    {icon}
+                                </div>
+                            ) : (
+                                <div className="h-12 w-12 rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center overflow-hidden flex-shrink-0">
+                                    <svg className="w-8 h-8 text-gray-400 dark:text-gray-500 mt-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path>
+                                    </svg>
+                                </div>
+                            )}
                             <div className="flex flex-col">
                                 <div className="font-medium leading-tight">{name}</div>
                                 <div className="opacity-60 text-sm">{role}</div>

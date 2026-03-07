@@ -3,34 +3,28 @@
 import { useMemo } from "react";
 import { TestimonialsCarousel } from "@/components/ui/testimonials-carousel";
 import { MOCK_SCHEMES } from "@/lib/mockData";
+import { Droplets, Zap, Trash2, GraduationCap, Building2, Pill, AlertTriangle } from "lucide-react";
 
 export default function SchemeGrievanceCarousel() {
     const schemesData = useMemo(() => {
-        const images = [
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
-            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
-            "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
-            "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop",
-            "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
-            "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop",
-            "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?w=100&h=100&fit=crop",
-            "https://images.unsplash.com/photo-1552058544-f2b08422138a?w=100&h=100&fit=crop",
-            "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=100&h=100&fit=crop",
-            "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop",
-        ];
         const names = [
             "Ramesh Kumar", "Priya Sharma", "Suresh Patel", "Anita Devi",
             "Kavitha R", "Mohan Das", "Sunita Yadav", "Arjun Singh",
             "Meena Kumari", "Ravi Shankar"
         ];
 
-        return MOCK_SCHEMES.slice(0, 10).map((scheme, i) => ({
-            text: scheme.description,
-            highlight: scheme.benefit,
-            image: images[i],
-            name: names[i],
-            role: "Enrolled via Neta-ji"
-        }));
+        return MOCK_SCHEMES.slice(0, 10).map((scheme, i) => {
+            const nameParts = names[i].split(" ");
+            const initials = nameParts.length > 1 ? `${nameParts[0][0]}${nameParts[1][0]}` : nameParts[0][0];
+
+            return {
+                text: scheme.description,
+                highlight: scheme.benefit,
+                initials: initials,
+                name: names[i],
+                role: "Enrolled via Neta-ji"
+            };
+        });
     }, []);
 
     const grievancesData = useMemo(() => {
@@ -77,15 +71,21 @@ export default function SchemeGrievanceCarousel() {
             },
         ];
 
-        return rawGrievances.map((grievance, i) => {
-            const isMen = i % 2 === 0;
-            const portraitId = 31 + Math.floor(i / 2);
-            const genderPath = isMen ? "men" : "women";
+        const getCategoryIcon = (category: string) => {
+            if (category.includes("Water")) return <Droplets className="w-6 h-6" />;
+            if (category.includes("Electric")) return <Zap className="w-6 h-6" />;
+            if (category.includes("Sanitation")) return <Trash2 className="w-6 h-6" />;
+            if (category.includes("Education")) return <GraduationCap className="w-6 h-6" />;
+            if (category.includes("Healthcare")) return <Pill className="w-6 h-6" />;
+            if (category.includes("Roads") || category.includes("Infrastructure")) return <AlertTriangle className="w-6 h-6" />;
+            return <Building2 className="w-6 h-6" />;
+        };
 
+        return rawGrievances.map((grievance, i) => {
             return {
                 text: `Reported: ${grievance.issue}. Resolved by ${grievance.category} department.`,
                 highlight: `Resolved in ${grievance.resolvedIn}`,
-                image: `https://randomuser.me/api/portraits/${genderPath}/${portraitId}.jpg`,
+                icon: getCategoryIcon(grievance.category),
                 name: grievance.name,
                 role: `${grievance.location} · ✅ Resolved in ${grievance.resolvedIn}`,
             };
@@ -102,15 +102,15 @@ export default function SchemeGrievanceCarousel() {
                 }}
             >
                 <div className="text-center mb-10 px-4">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-2">Live on the Ground</h2>
-                    <p className="text-gray-500 text-lg">Real schemes helping citizens. Real issues getting resolved.</p>
+                    <h2 className="text-3xl font-bold text-gray-900 mb-2">The Pulse of Bharat</h2>
+                    <p className="text-gray-500 text-lg">Real citizens claiming their rights. Real grievances getting solved.</p>
                 </div>
 
                 <div className="flex flex-col gap-6 schemes-grievance-container">
                     <div className="schemes-carousel">
                         <TestimonialsCarousel
                             testimonials={schemesData}
-                            speed={25}
+                            speed={50}
                             direction="left"
                         />
                     </div>
@@ -135,7 +135,7 @@ export default function SchemeGrievanceCarousel() {
             `}</style>
                         <TestimonialsCarousel
                             testimonials={grievancesData}
-                            speed={30}
+                            speed={60}
                             direction="right"
                         />
                     </div>
