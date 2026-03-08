@@ -88,3 +88,23 @@ export const WEB_FLOW_STEPS = [
     "Get instant results & tracking ID",
     "Monitor real-time status on dashboard",
 ];
+
+export const SCHEME_POSTER_MAP: Record<string, string> = {
+    "SCH_001": "sch_001",
+    "SCH_002": "sch_002",
+    "SCH_003": "sch_003",
+    "SCH_004": "sch_004",
+    "SCH_005": "sch_005",
+    "SCH_006": "sch_006",
+    "SCH_007": "sch_007",
+    "SCH_008": "sch_008",
+    "SCH_009": "sch_009",
+    "SCH_010": "sch_010",
+};
+
+export function getPosterUrl(schemeId: string, lang: string): string {
+    const id = SCHEME_POSTER_MAP[schemeId];
+    if (!id) return "";
+    const baseUrl = process.env.NEXT_PUBLIC_S3_BASE || "https://netaji-assets-posters.s3.ap-south-1.amazonaws.com";
+    return `${baseUrl}/${id}-${lang}.png`;
+}
