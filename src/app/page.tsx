@@ -44,7 +44,7 @@ export default function LandingPage() {
               {t('hero.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link href="/schemes">
+              <Link href="https://wa.me/919653233733?text=Hi" target="_blank" rel="noopener noreferrer">
                 <Button
                   size="lg"
                   className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white rounded-xl shadow-lg shadow-green-500/25 hover:shadow-green-500/40 transition-all h-12 px-8 text-base"
