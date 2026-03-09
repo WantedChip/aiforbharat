@@ -1,4 +1,4 @@
-# 🇮🇳 Neta.ai — Civic Connect
+# Neta.ai — Civic Connect
 ### *Sarkar Ki Schemes, Aapki Awaaz Mein*
 #### AI-Powered Civic Assistant for Bharat | AI for Bharat Hackathon 2026
 
