@@ -37,7 +37,7 @@ Simultaneously, civic complaints — broken roads, water failures, streetlight o
 | 🏛️ **Scheme Discovery** — AI eligibility check across 10 major schemes | WhatsApp + Web | ✅ Live |
 | 🗣️ **8 Indian Languages** — Full UI in Hindi, Bengali, Marathi, Telugu, Tamil, Gujarati, Kannada, English | WhatsApp + Web | ✅ Live |
 | 🔊 **Voice Responses** — AWS Polly neural audio in user's own language | WhatsApp | ✅ Live |
-| 🖼️ **Scheme Posters** — Language-matched official posters via S3 | WhatsApp | ✅ Live |
+| 🖼️ **Scheme Posters** — Language-matched official posters via S3 | WhatsApp + Web | ✅ Live |
 | 📢 **Grievance Reporting** — Report civic issues with AI classification via Bedrock | WhatsApp + Web | ✅ Live |
 | 📍 **Complaint Tracking** — End-to-end status tracking by complaint ID | WhatsApp + Web | ✅ Live |
 | 👨‍💼 **Admin Dashboard** — Analytics and grievance management for officials | Web | ✅ Live |
@@ -384,27 +384,6 @@ aws lambda create-function \
   --zip-file fileb://package.zip \
   --handler lambda_function.lambda_handler \
   --timeout 30
-```
-
-### Environment Variables
-
-```env
-# Frontend (.env.local)
-NEXT_PUBLIC_S3_BASE=https://netaji-assets-posters.s3.ap-south-1.amazonaws.com
-NEXT_PUBLIC_API_URL=https://kc1padv4d3.execute-api.ap-south-1.amazonaws.com
-NEXT_PUBLIC_ADMIN_PIN=1234
-NEXT_PUBLIC_USER_PIN=0000
-
-# Lambda environment variables
-WHATSAPP_TOKEN=your_permanent_system_user_token
-WHATSAPP_PHONE_ID=984284311440525
-
-# Complaint Lambda (Supabase)
-DB_HOST=your_supabase_host
-DB_NAME=postgres
-DB_USER=postgres
-DB_PASS=your_password
-BEDROCK_MODEL=anthropic.claude-3-haiku-20240307-v1:0
 ```
 
 ---
