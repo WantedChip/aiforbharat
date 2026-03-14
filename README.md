@@ -24,7 +24,7 @@
 > submitted and is under review (typically 24–48 hrs). 
 > The AWS Lambda architecture, DynamoDB sessions, Polly audio, 
 > and S3 poster delivery are all fully functional — 
-> please refer to the Demo Video for a complete walkthrough.
+> please refer to the <a href="https://youtu.be/95mP2qe2ZZo"> demo video </strong></a> for a complete walkthrough.
 
 ---
 
